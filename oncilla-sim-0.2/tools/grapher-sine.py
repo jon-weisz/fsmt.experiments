@@ -1,6 +1,10 @@
+#!/usr/bin/python
+
 __author__ = 'flier'
 
+import sys
 import subprocess
+
 
 class Grapher:
 
@@ -29,9 +33,13 @@ class Grapher:
                     self.add_to_file(line)
 
     def plot(self):
-        p = subprocess.call("./plot.sh")
+        p = subprocess.call("plot-sine.sh")
 
 if __name__ == "__main__":
-    g = Grapher("/tmp/flier/fsmt/05-14_155336/logs/sine.log", "x")
+
+    if len(sys.argv) < 3:
+        print "You need to provide a full path to oncilla log file"
+        sys.exit(1)
+    g = Grapher(sys.argv[1], "x")
     g.resultfile.close()
     g.plot()
