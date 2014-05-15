@@ -14,5 +14,5 @@ IF (CMAKE_INSTALL_PREFIX)
 ENDIF()
 
 ### Glob, then install the files ###
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/plot-sine.sh" DESTINATION ${PREFIX}/bin/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/grapher-sine.py" DESTINATION ${PREFIX}/bin/ )
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/onc-sim0.2-grapher-sine.py" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/onc-sim0.2-plot-sine.sh" DESTINATION ${PREFIX}/bin/ )
