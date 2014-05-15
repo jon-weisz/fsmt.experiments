@@ -33,12 +33,12 @@ class Grapher:
                     self.add_to_file(line)
 
     def plot(self):
-        p = subprocess.call("plot-sine.sh")
+        p = subprocess.call("onc-sim0.2-plot-sine.sh")
 
 if __name__ == "__main__":
 
     if len(sys.argv) < 3:
-        print "You need to provide a full path to oncilla log file"
+        print "You need to provide a full path to oncilla-sine log file"
         sys.exit(1)
     g = Grapher(sys.argv[1], "x")
     g.resultfile.close()
