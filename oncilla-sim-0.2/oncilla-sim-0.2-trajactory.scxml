@@ -1,9 +1,10 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="Oncilla-Sim-0.2-Trajectory" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
-            <variable val="/tmp/oncilla-sim-0.2/" var="release_prefix" />
-            <variable val="/tmp/oncilla-sim-0.2/" var="prefix" />
-            <variable val="/tmp/oncilla-sim-0.2/opt/" var="script_path" />
+            <variable val="$PREFIX/lib/python2.7/site-packages/:$PYTHONPATH" var="PYTHONPATH" />
+            <variable val="/tmp/oncilla-sim-0.2/" var="PREFIX" />
+            <variable val="$PREFIX/share/cca-oncilla0.4/examples/" var="CCA_SHARE" />
+            <variable val="/usr/local/" var="WEBOTS_HOME" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
@@ -19,18 +20,42 @@
             </component>
             <component val="webots">
                 <command val="webots" />
-                <path val="/usr/local/bin/" />
+                <path val="$WEBOTS_HOME/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="10" val="pid" />
                 </check_execution>
             </component>
-            <component val="pwd">
-                <command val="pwd" />
-                <path val="/bin/" />
+            <component val="sine">
+                <command val="python $CCA_SHARE/OncillaRemoteSimpleSineMovement.py" />
+                <path val="/usr/bin/" />
                 <execution_host val="localhost" />
-                <check_execution val="False">
-                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="------ Step: 200" ongoing="False" timeout="45" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="proc_data">
+                <command val="onc-sim0.2-grapher-sine.py $FSMLOG/sine.log" />
+                <path val="$PREFIX/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot">
+                <command val="onc-sim0.2-plot-sine.sh" />
+                <path val="$PREFIX/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="show_plot">
+                <command val="eog /tmp/oncilla-sine-result.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
         </data>
@@ -67,7 +92,7 @@
         <state id="state_0_1">
             <onentry>
                 <log expr="'Entering State: state_0_1'" label="INFO" />
-                <my_ns:execute_program value="pwd" />
+                <my_ns:execute_program value="sine" />
             </onentry>
             <transition event="state_0_1.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
@@ -76,12 +101,12 @@
         </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
-                <send delay="'10s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 20 seconds)'" label="INFO" />
+                <send delay="'20s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 20 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -99,7 +124,7 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="pwd" />
+                <my_ns:execute_program value="proc_data" />
             </onentry>
             <transition event="assessment_state_0.execute_program.success" target="assessment_state_0_1" />
             <onexit>
@@ -109,21 +134,31 @@
         <state id="assessment_state_0_1">
             <onentry>
                 <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
-                <my_ns:execute_program value="pwd" />
+                <my_ns:execute_program value="plot" />
             </onentry>
-            <transition event="assessment_state_0_1.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="assessment_state_0_1.execute_program.success" target="assessment_state_0_2" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
             </onexit>
         </state>
+        <state id="assessment_state_0_2">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
+                <my_ns:execute_program value="show_plot" />
+            </onentry>
+            <transition event="assessment_state_0_2.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
+            </onexit>
+        </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 5 seconds)'" label="INFO" />
-                <send delay="'5s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
+                <send delay="'10s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 5 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
