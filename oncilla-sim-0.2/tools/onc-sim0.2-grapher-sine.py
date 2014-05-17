@@ -42,4 +42,4 @@ if __name__ == "__main__":
         sys.exit(1)
     g = Grapher(sys.argv[1], "x")
     g.resultfile.close()
-    g.plot()
+    # g.plot()
