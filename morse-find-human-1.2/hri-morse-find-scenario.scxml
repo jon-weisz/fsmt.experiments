@@ -3,9 +3,9 @@
         <data id="environment">
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
             <variable val="/vol/morse-1.2-STABLE/" var="PREFIX" />
-            <variable val="$PREFIX/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
-            <variable val="$PREFIX/lib/python3.2/site-packages/:/opt/ros/groovy/lib/python2.7/dist-packages/" var="PYTHONPATH" />
-            <variable val="$PREFIX" var="MORSE_ROOT" />
+            <variable val="/vol/morse-1.2-STABLE/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
+            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/:/vol/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
+            <variable val="/vol/morse-1.2-STABLE/" var="MORSE_ROOT" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
@@ -55,7 +55,7 @@
             </component>
             <component val="start_human">
                 <command val="python3.2 $SCRIPT_PATH/hri-start-human-waypoint.py" />
-                <path val="$PREFIX/bin/" />
+                <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
