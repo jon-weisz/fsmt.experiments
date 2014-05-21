@@ -4,7 +4,7 @@
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
             <variable val="/vol/morse-1.2-STABLE/" var="PREFIX" />
             <variable val="$PREFIX/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
-            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/" var="PYTHONPATH" />
+            <variable val="$PREFIX/lib/python3.2/site-packages/:/opt/ros/groovy/lib/python2.7/dist-packages/" var="PYTHONPATH" />
             <variable val="$PREFIX" var="MORSE_ROOT" />
         </data>
         <data id="hosts">
