@@ -2,8 +2,9 @@
     <datamodel>
         <data id="environment">
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
-            <variable val="/tmp/morse-1.2-STABLE/" var="PREFIX" />
+            <variable val="/vol/morse-1.2-STABLE/" var="PREFIX" />
             <variable val="$PREFIX/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
+            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/" var="PYTHONPATH" />
             <variable val="$PREFIX" var="MORSE_ROOT" />
         </data>
         <data id="hosts">
@@ -29,7 +30,7 @@
             </component>
             <component val="morse">
                 <command val="morse run $SCRIPT_PATH/hri-morse-find-scenario.py" />
-                <path val="$prefix/bin/" />
+                <path val="$PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="20" val="stdout" />
@@ -54,7 +55,7 @@
             </component>
             <component val="start_human">
                 <command val="python3.2 $SCRIPT_PATH/hri-start-human-waypoint.py" />
-                <path val="$prefix/bin/" />
+                <path val="$PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />

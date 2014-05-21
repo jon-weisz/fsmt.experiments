@@ -15,10 +15,11 @@ ENDIF()
 
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-find-scenario.py"  DESTINATION  ${PREFIX}/bin/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-start-waypoint.py"       DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-log-human.py"      DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-start-human-waypoint.py" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-ros-image-view.py"       DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/hri-morse-find-scenario.ini"   DESTINATION ${PREFIX}/etc/fsmt-experiments/MORSE-find-human-1.2/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/hri-morse-find-scenario.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/MORSE-find-human-1.2/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-find-scenario.py" DESTINATION ${PREFIX}/etc/fsmt-experiments/MORSE-find-human-1.2/)
+
 
