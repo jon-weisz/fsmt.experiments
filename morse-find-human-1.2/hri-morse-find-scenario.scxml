@@ -33,7 +33,7 @@
                 <path val="$PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="20" val="stdout" />
+                    <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="40" val="stdout" />
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
