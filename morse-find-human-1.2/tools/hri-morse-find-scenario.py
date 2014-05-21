@@ -1,21 +1,21 @@
 from morse.builder import *
 
-# Robot
-robot = BasePR2()
+# Adding the Robot
+robot = ATRV()
 robot.translate(x=0.8, z=0.2)
 robot.rotate(x=0.0, y=0.0, z=3.14)
 
-# Robot differential drive actuator 
+# Robot's differential drive actuator 
 motion_vw = MotionVW()
 robot.append(motion_vw)
 
-# Waypoint actuator
+# Adding a waypoint Actuator
 waypoint = Waypoint()
 
-# Pose sensor
+# Adding a Pose sensor
 pose = Pose()
 
-# Adding objects
+# Adding Objects
 box_blue = PassiveObject('props/objects','BlueToyTrashbin')
 box_blue.setgraspable()
 box_blue.translate(x=0.5, y=-2.0, z=0.0)
