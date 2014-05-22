@@ -1,11 +1,11 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="MORSE-find-human-1.2" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
+            <variable val="$PREFIX/morse-1.2-STABLE/" var="RELEASE_PREFIX" />
+            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/:$PREFIX/lib/python3.2/site-packages/" var="PYTHONPATH" />
+            <variable val="$PREFIX/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
-            <variable val="/vol/morse-1.2-STABLE/" var="PREFIX" />
-            <variable val="/vol/morse-1.2-STABLE/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
-            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/:/vol/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
-            <variable val="/vol/morse-1.2-STABLE/" var="MORSE_ROOT" />
+            <variable val="$PREFIX" var="MORSE_ROOT" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
@@ -29,8 +29,8 @@
                 </check_execution>
             </component>
             <component val="morse">
-                <command val="morse run $PREFIX/bin/hri-morse-find-scenario.py" />
-                <path val="$PREFIX/bin/" />
+                <command val="morse run $RELEASE_PREFIX/bin/hri-morse-find-scenario.py" />
+                <path val="$RELEASE_PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="40" val="stdout" />
@@ -38,7 +38,7 @@
                 </check_execution>
             </component>
             <component val="start_robot">
-                <command val="python2.7 $PREFIX/bin/hri-start-waypoint.py" />
+                <command val="python2.7 $RELEASE_PREFIX/bin/hri-start-waypoint.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -46,7 +46,7 @@
                 </check_execution>
             </component>
             <component val="log_human_pose">
-                <command val="python2.7 $PREFIX/bin/hri-morse-log-human.py" />
+                <command val="python2.7 $RELEASE_PREFIX/bin/hri-morse-log-human.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -54,7 +54,7 @@
                 </check_execution>
             </component>
             <component val="start_human">
-                <command val="python3.2 $PREFIX/bin/hri-start-human-waypoint.py" />
+                <command val="python3.2 $RELEASE_PREFIX/bin/hri-start-human-waypoint.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -62,7 +62,7 @@
                 </check_execution>
             </component>
             <component val="image_view">
-                <command val="python2.7 $PREFIX/bin/hri-ros-image-view.py" />
+                <command val="python2.7 $RELEASE_PREFIX/bin/hri-ros-image-view.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -70,7 +70,7 @@
                 </check_execution>
             </component>
             <component val="clean_logs">
-                <command val="sh $PREFIX/bin/hri-clean-logs.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
+                <command val="sh $RELEASE_PREFIX/bin/hri-clean-logs.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -86,7 +86,7 @@
                 </check_execution>
             </component>
             <component val="plot_path">
-                <command val="sh $PREFIX/bin/hri-gplot.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log Human_Position x" />
+                <command val="sh $RELEASE_PREFIX/bin/hri-gplot.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log Human_Position x" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
