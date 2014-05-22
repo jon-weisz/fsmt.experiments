@@ -6,14 +6,14 @@ robot.translate(x=0.8, z=0.2)
 robot.rotate(x=0.0, y=0.0, z=3.14)
 
 # Robot's differential drive actuator 
-motion_vw = MotionVW()
+motion_vw = MotionVW('motion_vw')
 robot.append(motion_vw)
 
 # Adding a waypoint Actuator
-waypoint = Waypoint()
+waypoint = Waypoint('waypoint')
 
 # Adding a Pose sensor
-pose = Pose()
+pose = Pose('pose')
 
 # Adding Objects
 box_blue = PassiveObject('props/objects','BlueToyTrashbin')
