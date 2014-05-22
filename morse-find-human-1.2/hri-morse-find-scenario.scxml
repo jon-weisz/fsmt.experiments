@@ -70,7 +70,7 @@
                 </check_execution>
             </component>
             <component val="clean_logs">
-                <command val="sh $RELEASE_PREFIX/bin/hri-clean-logs.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
+                <command val="sh $RELEASE_PREFIX/bin/hri-clean-logs.sh /tmp/$USER/fsmt/$FSMTRA/logs/log_human_pose.log" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -86,7 +86,7 @@
                 </check_execution>
             </component>
             <component val="plot_path">
-                <command val="sh $RELEASE_PREFIX/bin/hri-gplot.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log Human_Position x" />
+                <command val="sh $RELEASE_PREFIX/bin/hri-gplot.sh /tmp/$USER/fsmt/$FSMTRA/logs/log_human_pose.log Human_Position x" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -94,7 +94,7 @@
                 </check_execution>
             </component>
             <component val="plot_display">
-                <command val="eog /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log.png" />
+                <command val="eog /tmp/$USER/fsmt/$FSMTRA/logs/log_human_pose.log.png" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
