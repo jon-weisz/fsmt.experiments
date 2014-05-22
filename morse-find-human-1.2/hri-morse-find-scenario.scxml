@@ -38,7 +38,7 @@
                 </check_execution>
             </component>
             <component val="start_robot">
-                <command val="python2.7 $RELEASE_PREFIX/bin/hri-start-waypoint.py" />
+                <command val="python2.7 $RELEASE_PREFIX/bin/hri-start-robot-ros.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
