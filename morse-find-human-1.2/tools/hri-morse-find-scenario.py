@@ -8,7 +8,7 @@ robot.rotate(x=0.0, y=0.0, z=3.14)
 tmp = ATRV('ATRV')
 tmp.translate(x=4.8, z=0.2)
 tmp.rotate(x=0.0, y=0.0, z=3.14)
-wayp = Waypoint('waypoint2')
+wayp = Waypoint('wayp')
 tmp.append(wayp)
 wayp.add_stream('socket')
 
