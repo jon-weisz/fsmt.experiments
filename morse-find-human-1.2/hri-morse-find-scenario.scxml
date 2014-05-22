@@ -1,0 +1,288 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="MORSE-find-human-1.2" initial="initialise_test" version="1.0">
+    <datamodel>
+        <data id="environment">
+            <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
+            <variable val="/vol/morse-1.2-STABLE/" var="PREFIX" />
+            <variable val="/vol/morse-1.2-STABLE/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
+            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/:/vol/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
+            <variable val="/vol/morse-1.2-STABLE/" var="MORSE_ROOT" />
+        </data>
+        <data id="hosts">
+            <hostinfo ip="127.0.0.1" name="localhost" />
+        </data>
+        <data id="component_bundle">
+            <component val="default">
+                <command val="ls $FSMFSM" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="False" criteria="" ongoing="False" timeout="3" val="pid" />
+                </check_execution>
+            </component>
+            <component val="roscore">
+                <command val="roscore" />
+                <path val="/opt/ros/groovy/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="started core service [/rosout]" ongoing="False" timeout="10" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
+            <component val="morse">
+                <command val="morse run $PREFIX/bin/hri-morse-find-scenario.py" />
+                <path val="$PREFIX/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="40" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
+            <component val="start_robot">
+                <command val="python2.7 $PREFIX/bin/hri-start-waypoint.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="log_human_pose">
+                <command val="python2.7 $PREFIX/bin/hri-morse-log-human.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="start_human">
+                <command val="python3.2 $PREFIX/bin/hri-start-human-waypoint.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="image_view">
+                <command val="python2.7 $PREFIX/bin/hri-ros-image-view.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="clean_logs">
+                <command val="sh $PREFIX/bin/hri-clean-logs.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="assess_human_log">
+                <command val="gedit /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot_path">
+                <command val="sh $PREFIX/bin/hri-gplot.sh /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log Human_Position x" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot_display">
+                <command val="eog /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+        </data>
+    </datamodel>
+    <transition event="unsatisfied_criteria" target="criteria_error">
+        <log expr="'Received unsatisfied_criteria event!'" label="ERROR" />
+    </transition>
+    <transition event="external_abortion" target="abortion_error">
+        <log expr="'Received unsatisfied_criteria event!'" label="ERROR" />
+    </transition>
+    <transition event="execute_program.fail" target="execution_error">
+        <log expr="'Recieved execution_error event!'" label="ERROR" />
+    </transition>
+    <state id="initialise_test">
+        <onentry>
+            <log expr="'Entering State initialise_test'" label="INFO" />
+        </onentry>
+        <transition target="run_test" />
+        <onexit>
+            <log expr="'Exiting State: initialise_test'" label="INFO" />
+        </onexit>
+    </state>
+    <state id="run_test" initial="state_0">
+        <state id="state_0">
+            <onentry>
+                <log expr="'Entering State: state_0'" label="INFO" />
+                <my_ns:execute_program value="roscore" />
+            </onentry>
+            <transition event="state_0.execute_program.success" target="state_0_1" />
+            <onexit>
+                <log expr="'Exiting State: state_0'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_1">
+            <onentry>
+                <log expr="'Entering State: state_0_1'" label="INFO" />
+                <my_ns:execute_program value="morse" />
+            </onentry>
+            <transition event="state_0_1.execute_program.success" target="state_0_2" />
+            <onexit>
+                <log expr="'Exiting State: state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_2">
+            <onentry>
+                <log expr="'Entering State: state_0_2'" label="INFO" />
+                <my_ns:execute_program value="image_view" />
+            </onentry>
+            <transition event="state_0_2.execute_program.success" target="state_0_3" />
+            <onexit>
+                <log expr="'Exiting State: state_0_2'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_3">
+            <onentry>
+                <log expr="'Entering State: state_0_3'" label="INFO" />
+                <my_ns:execute_program value="log_human_pose" />
+            </onentry>
+            <transition event="state_0_3.execute_program.success" target="state_0_4" />
+            <onexit>
+                <log expr="'Exiting State: state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_4">
+            <onentry>
+                <log expr="'Entering State: state_0_4'" label="INFO" />
+                <my_ns:execute_program value="start_human" />
+            </onentry>
+            <transition event="state_0_4.execute_program.success" target="state_0_5" />
+            <onexit>
+                <log expr="'Exiting State: state_0_4'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_5">
+            <onentry>
+                <log expr="'Entering State: state_0_5'" label="INFO" />
+                <my_ns:execute_program value="start_robot" />
+            </onentry>
+            <transition event="state_0_5.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_5'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="pre_result_assessment_wait">
+            <onentry>
+                <log expr="'Entering State: Wait (collecting data for 20 seconds)'" label="INFO" />
+                <send delay="'20s'" event="wait.finish" />
+            </onentry>
+            <transition event="wait.finish" target="result_assessment" />
+            <onexit>
+                <log expr="'Exiting State: Wait (collected data for 20 seconds)'" label="INFO" />
+            </onexit>
+        </state>
+    </state>
+    <state id="result_assessment" initial="clean">
+        <state id="clean">
+            <onentry>
+                <log expr="'Entering State: Cleanup components'" label="INFO" />
+                <my_ns:cleanUp expr="executable" value="" />
+            </onentry>
+            <transition target="assessment_state_0" />
+            <onexit>
+                <log expr="'Exiting State: Done cleaning up'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0'" label="INFO" />
+                <my_ns:execute_program value="clean_logs" />
+            </onentry>
+            <transition event="assessment_state_0.execute_program.success" target="assessment_state_0_1" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_1">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
+                <my_ns:execute_program value="assess_human_log" />
+            </onentry>
+            <transition event="assessment_state_0_1.execute_program.success" target="assessment_state_0_2" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_2">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
+                <my_ns:execute_program value="plot_path" />
+            </onentry>
+            <transition event="assessment_state_0_2.execute_program.success" target="assessment_state_0_3" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_3">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
+                <my_ns:execute_program value="plot_display" />
+            </onentry>
+            <transition event="assessment_state_0_3.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_pre_exit_test_wait">
+            <onentry>
+                <log expr="'Entering State: Wait (collecting data for 5 seconds)'" label="INFO" />
+                <send delay="'5s'" event="wait.finish" />
+            </onentry>
+            <transition event="wait.finish" target="exit_test" />
+            <onexit>
+                <log expr="'Exiting State: Wait (collected data for 5 seconds)'" label="INFO" />
+            </onexit>
+        </state>
+    </state>
+    <state id="criteria_error">
+        <onentry>
+            <log expr="'criteria_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="criteria" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <state id="execution_error">
+        <onentry>
+            <log expr="'execution_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="executionFail" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <state id="abortion_error">
+        <onentry>
+            <log expr="'execution_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="abortion" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <final id="exit_test">
+        <onentry>
+            <log expr="'Entering State: exit_test'" label="INFO" />
+            <my_ns:cleanUp expr="executable" value="" />
+        </onentry>
+        <onexit>
+            <log expr="'Exiting State: exit_test'" label="INFO" />
+        </onexit>
+    </final>
+</scxml>
