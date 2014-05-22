@@ -78,7 +78,7 @@
                 </check_execution>
             </component>
             <component val="assess_human_log">
-                <command val="gedit /tmp/$USER/fsmtesting/$FSMTRA/logs/log_human_pose.log" />
+                <command val="gedit /tmp/$USER/fsmt/$FSMTRA/logs/log_human_pose.log" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
