@@ -5,13 +5,6 @@ robot = ATRV('ATRV')
 robot.translate(x=0.8, z=0.2)
 robot.rotate(x=0.0, y=0.0, z=3.14)
 
-tmp = ATRV('ATRV')
-tmp.translate(x=4.8, z=0.2)
-tmp.rotate(x=0.0, y=0.0, z=3.14)
-wayp = Waypoint('wayp')
-tmp.append(wayp)
-wayp.add_stream('socket')
-
 # Robot's differential drive actuator 
 motion_vw = MotionVW('motion_vw')
 robot.append(motion_vw)
