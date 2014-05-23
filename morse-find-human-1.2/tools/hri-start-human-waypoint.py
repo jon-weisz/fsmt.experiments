@@ -23,7 +23,7 @@ with Morse() as simu:
 
     setwyp(waypoint, {'x' : -1.0, 'y': -5.0, 'z': 0.0, 'tolerance' : 0.1, 'speed' : 1.0})
     curr_pos = getpos(simu)
-    while curr_pos['y'] > -4.9:
+    while curr_pos['y'] > -4.5:
         curr_pos = getpos(simu)
         time.sleep(0.1)
 
