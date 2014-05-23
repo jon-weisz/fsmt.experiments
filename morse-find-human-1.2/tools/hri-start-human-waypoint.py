@@ -15,16 +15,16 @@ def setwyp(_waypoint, target):
 with Morse() as simu:
     waypoint = simu.human.waypoint
 
-    setwyp(waypoint, {'x' : -2.0, 'y': -2.0, 'z': 0.0, 'tolerance' : 0.1, 'speed' : 1.0})
+    setwyp(waypoint, {'x' : -2.0, 'y': -2.0, 'z': 0.0, 'tolerance' : 0.01, 'speed' : 1.5})
     curr_pos = getpos(simu)
     while curr_pos['y'] > -1.9:
         curr_pos = getpos(simu)
         time.sleep(0.1)
 
-    setwyp(waypoint, {'x' : -1.0, 'y': -5.0, 'z': 0.0, 'tolerance' : 0.1, 'speed' : 1.0})
+    setwyp(waypoint, {'x' : -1.0, 'y': -5.0, 'z': 0.0, 'tolerance' : 0.01, 'speed' : 1.5})
     curr_pos = getpos(simu)
     while curr_pos['y'] > -4.5:
         curr_pos = getpos(simu)
         time.sleep(0.1)
 
-    setwyp(waypoint, {'x' : 0.5, 'y': -3.5, 'z': 0.0, 'tolerance' : 0.1, 'speed' : 1.0})
+    setwyp(waypoint, {'x' : 0.3, 'y': -3.5, 'z': 0.0, 'tolerance' : 0.01, 'speed' : 1.5})
