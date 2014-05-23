@@ -1,4 +1,5 @@
 import sys
+import time
 
 
 class Checker:
@@ -18,14 +19,14 @@ class Checker:
                     try:
                         assert float(first) == -1.00
                     except AssertionError, e:
-                        print "Error, position is not -1.00"
+                        print "Error, position is not -1.00 but %s" % first
                         sys.exit(1)
                 if x == leng:
                     last = line[0:5]
                     try:
                         assert float(last) == 0.593
                     except AssertionError, e:
-                        print "Error, last is not 0.593"
+                        print "Error, last is not 0.593 but %s" % last
                         sys.exit(1)
 
 
@@ -37,3 +38,4 @@ if __name__ == "__main__":
         sys.exit(1)
     g = Checker(sys.argv[1])
     print "All good, position test passed"
+    time.sleep(10)
