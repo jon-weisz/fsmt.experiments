@@ -25,7 +25,7 @@ class Checker:
                 if x == leng:
                     desired = 0.232
                     last = line[0:5]
-                    if last - desired > 0.2 or last desired < -0.2:
+                    if (last - desired) > 0.2 or (last - desired) < -0.2:
                         print "Error, last is not 0.232 but %s" % last
                         time.sleep(5)
                         sys.exit(1)
