@@ -32,7 +32,8 @@ box_pink.properties(Object = True, Graspable = False, Label = "BOX_PINK")
 
 # Human component
 human = Human()
-human.translate(x=-1.0, z=0.0)
+#human.translate(x=-1.0, z=0.0)
+human.translate(x=4.8, z=0.0)
 human.use_world_camera()
 human.disable_keyboard_control()
 human.append(waypoint)
