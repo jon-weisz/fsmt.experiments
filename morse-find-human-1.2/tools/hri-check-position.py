@@ -1,5 +1,4 @@
 import sys
-import unittest
 
 
 class Checker:
@@ -20,12 +19,14 @@ class Checker:
                         assert float(first) == -1.00
                     except AssertionError, e:
                         print "Error, position is not -1.00"
+                        sys.exit(1)
                 if x == leng:
                     last = line[0:5]
                     try:
                         assert float(last) == 0.593
                     except AssertionError, e:
                         print "Error, last is not 0.593"
+                        sys.exit(1)
 
 
 if __name__ == "__main__":
@@ -35,3 +36,4 @@ if __name__ == "__main__":
         "You need to provide a full path to oncilla-sine log file"
         sys.exit(1)
     g = Checker(sys.argv[1])
+    print "All good, position test passed"
