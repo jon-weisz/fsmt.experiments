@@ -14,7 +14,7 @@ IF (CMAKE_INSTALL_PREFIX)
 ENDIF()
 
 ### Glob, then install the files ###
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-find-scenario.py"  DESTINATION  ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-find-scenario.py"  DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-morse-log-human.py"      DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-start-human-waypoint.py" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/hri-start-robot-ros.py"      DESTINATION ${PREFIX}/bin/)
