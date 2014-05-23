@@ -32,10 +32,9 @@ box_pink.properties(Object = True, Graspable = False, Label = "BOX_PINK")
 
 # Human component
 human = Human()
-#human.translate(x=-1.0, z=0.0)
-human.translate(x=4.8, z=0.0)
+human.translate(x=-1.0, z=0.0)
 human.use_world_camera()
-human.disable_keyboard_control()
+# human.disable_keyboard_control()
 human.append(waypoint)
 human.append(pose)
 
@@ -64,8 +63,8 @@ semantic.add_stream('ros')
 motion_vw.add_stream('ros')
 video_cam.add_stream('ros')
 pose.add_stream('socket')
-human.add_service('socket')
 waypoint.add_stream('socket')
+human.add_service('socket')
 
 # Environment
 env = Environment('apartment')
