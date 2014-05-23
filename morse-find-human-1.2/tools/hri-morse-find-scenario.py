@@ -11,6 +11,7 @@ robot.append(motion_vw)
 
 # Adding a waypoint Actuator
 waypoint = Waypoint()
+waypoint.properties(ObstacleAvoidance = False, ControlType = Position)
 
 # Adding a Pose sensor
 pose = Pose()
