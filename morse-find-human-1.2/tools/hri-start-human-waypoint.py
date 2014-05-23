@@ -15,8 +15,6 @@ def setwyp(_waypoint, target):
 with Morse() as simu:
     waypoint = simu.human.waypoint
 
-    simu.rpc('human', 'move', 1, -0.1)
-
     setwyp(waypoint, {'x' : -2.0, 'y': -2.0, 'z': 0.0, 'tolerance' : 0.1, 'speed' : 1.0})
     curr_pos = getpos(simu)
     while curr_pos['y'] > -1.9:
