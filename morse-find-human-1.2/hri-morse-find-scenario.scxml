@@ -194,12 +194,12 @@
         </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 40 seconds)'" label="INFO" />
-                <send delay="'40s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 30 seconds)'" label="INFO" />
+                <send delay="'30s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 40 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 30 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
