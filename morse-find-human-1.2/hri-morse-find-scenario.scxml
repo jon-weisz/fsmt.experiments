@@ -43,6 +43,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking="True" criteria="publishing and latching message for 3.0 seconds" ongoing="False" timeout="4" val="stdout" />
                 </check_execution>
             </component>
             <component val="log_human_pose">
