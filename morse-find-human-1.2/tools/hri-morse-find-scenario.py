@@ -64,6 +64,7 @@ semantic.add_stream('ros')
 motion_vw.add_stream('ros')
 video_cam.add_stream('ros')
 pose.add_stream('socket')
+human.add_service('socket')
 waypoint.add_stream('socket')
 
 # Environment
