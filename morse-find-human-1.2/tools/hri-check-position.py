@@ -25,7 +25,7 @@ class Checker:
                 if x == leng:
                     desired = 0.232
                     last = line[0:5]
-                    if (float(last) - desired) > 0.002 or (float(last) - desired) < -0.002:
+                    if (float(last) - desired) > 0.2 or (float(last) - desired) < -0.2:
                         print "Error, last is not 0.232 but %s" % last
                         time.sleep(5)
                         sys.exit(1)
@@ -35,8 +35,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 2:
         print
-        "You need to provide a full path to oncilla-sine log file"
+        "You need to provide a full path to log file"
         sys.exit(1)
     g = Checker(sys.argv[1])
-    print "All good, position test passed"
+    print "All good - human position within 0.2 metres delta"
     time.sleep(10)
