@@ -33,7 +33,7 @@
                 <path val="$RELEASE_PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="Exporting an image of capsize: (512" ongoing="False" timeout="40" val="stdout" />
+                    <check_type blocking="True" criteria="Exporting an image of capsize: (512" ongoing="False" timeout="60" val="stdout" />
                     <check_type blocking="True" criteria=" 512) pixels" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
