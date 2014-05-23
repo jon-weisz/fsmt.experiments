@@ -54,7 +54,7 @@
                 </check_execution>
             </component>
             <component val="start_human">
-                <command val="python3.2 $RELEASE_PREFIX/bin/hri-start-human-waypoint.py" />
+                <command val="python3.2 $RELEASE_PREFIX/bin/hri-start-human-service.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
