@@ -25,7 +25,7 @@ class Checker:
                 if x == leng:
                     last = line[0:5]
                     try:
-                        assert float(last) == 0.158
+                        assert float(last) == 0.324
                     except AssertionError, e:
                         print "Error, last is not 0.711 but %s" % last
                         time.sleep(5)
