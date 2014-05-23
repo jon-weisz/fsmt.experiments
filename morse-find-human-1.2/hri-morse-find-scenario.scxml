@@ -101,6 +101,15 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="check_position">
+                <command val="python2.7 $RELEASE_PREFIX/bin/hri-check-position.py /tmp/$USER/fsmt/$FSMTRA/logs/log_human_pose.log" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking="True" criteria="All good" ongoing="False" timeout="5" val="stdout" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -239,9 +248,19 @@
                 <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
                 <my_ns:execute_program value="plot_display" />
             </onentry>
-            <transition event="assessment_state_0_3.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="assessment_state_0_3.execute_program.success" target="assessment_state_0_4" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_4">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_4'" label="INFO" />
+                <my_ns:execute_program value="check_position" />
+            </onentry>
+            <transition event="assessment_state_0_4.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_4'" label="INFO" />
             </onexit>
         </state>
         <state id="assessment_pre_exit_test_wait">
