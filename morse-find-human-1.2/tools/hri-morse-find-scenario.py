@@ -43,21 +43,21 @@ human.append(pose)
 human.properties(Object = True, Graspable = False, Label = "HUMAN")
 
 # Add a Video Stream
-# video_cam = VideoCamera()
-# video_cam.translate(0.0, 0.0, 1.2)
-# video_cam.rotate(y=-0.25)
+video_cam = VideoCamera()
+video_cam.translate(0.0, 0.0, 1.2)
+video_cam.rotate(y=-0.25)
 
 # Semantic camera
 semantic = SemanticCamera()
 semantic.properties(cam_focal = 50, cam_far = 200, noocclusion = True)
 semantic.translate(x=0.0, y=0.0, z=1.3)
 robot.append(semantic)
-# robot.append(video_cam)
+robot.append(video_cam)
 
 # Middleware Interfaces
 semantic.add_stream('ros')
 motion_vw.add_stream('ros')
-# video_cam.add_stream('ros')
+video_cam.add_stream('ros')
 pose.add_stream('socket')
 waypoint.add_stream('socket')
 human.add_service('socket')

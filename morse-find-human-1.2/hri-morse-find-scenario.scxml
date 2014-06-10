@@ -155,7 +155,7 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="log_human_pose" />
+                <my_ns:execute_program value="image_view" />
             </onentry>
             <transition event="state_0_2.execute_program.success" target="state_0_3" />
             <onexit>
@@ -165,7 +165,7 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="start_human" />
+                <my_ns:execute_program value="log_human_pose" />
             </onentry>
             <transition event="state_0_3.execute_program.success" target="state_0_4" />
             <onexit>
@@ -175,11 +175,21 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="start_robot" />
+                <my_ns:execute_program value="start_human" />
             </onentry>
-            <transition event="state_0_4.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="state_0_4.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_5">
+            <onentry>
+                <log expr="'Entering State: state_0_5'" label="INFO" />
+                <my_ns:execute_program value="start_robot" />
+            </onentry>
+            <transition event="state_0_5.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
