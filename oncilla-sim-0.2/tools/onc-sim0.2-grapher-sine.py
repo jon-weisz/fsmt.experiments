@@ -37,7 +37,7 @@ class Grapher:
 
 if __name__ == "__main__":
 
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print "You need to provide a full path to oncilla-sine log file"
         sys.exit(1)
     g = Grapher(sys.argv[1], "x")
