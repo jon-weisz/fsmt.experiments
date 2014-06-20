@@ -15,7 +15,7 @@ ENDIF()
 
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/onc-sim0.2-grapher-sine.py" DESTINATION ${PREFIX}/bin/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/onc-sim0.2-plot-sine.sh" DESTINATION ${PREFIX}/bin/ )
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oncilla-sim-0.2-trajactory.ini" DESTINATION ${PREFIX}/etc/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oncilla-sim-0.2-trajactory.scxml" DESTINATION ${PREFIX}/etc/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/onc-sim0.2-plot-sine.sh" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oncilla-sim-0.2-trajactory.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/onc-sim-0.2-sine/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/oncilla-sim-0.2-trajactory.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/onc-sim-0.2-sine/)
 
