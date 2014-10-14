@@ -88,7 +88,7 @@
                 <log expr="'Entering State: state_0'" label="INFO" />
                 <my_ns:execute_program value="roscore" />
             </onentry>
-            <transition event="state_0.execute_program.success" target="state_0_1" />
+            <transition event="roscore.execute_program.success" target="state_0_1" />
             <onexit>
                 <log expr="'Exiting State: state_0'" label="INFO" />
             </onexit>
@@ -98,7 +98,7 @@
                 <log expr="'Entering State: state_0_1'" label="INFO" />
                 <my_ns:execute_program value="hlc_server" />
             </onentry>
-            <transition event="state_0_1.execute_program.success" target="state_0_2" />
+            <transition event="hlc_server.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
             </onexit>
@@ -108,7 +108,7 @@
                 <log expr="'Entering State: state_0_2'" label="INFO" />
                 <my_ns:execute_program value="morse_import" />
             </onentry>
-            <transition event="state_0_2.execute_program.success" target="state_0_3" />
+            <transition event="morse_import.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -118,7 +118,7 @@
                 <log expr="'Entering State: state_0_3'" label="INFO" />
                 <my_ns:execute_program value="morse" />
             </onentry>
-            <transition event="state_0_3.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="morse.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -150,7 +150,7 @@
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
                 <my_ns:execute_program value="rostopic" />
             </onentry>
-            <transition event="assessment_state_0.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="rostopic.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
