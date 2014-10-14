@@ -137,7 +137,7 @@
                 <log expr="'Entering State: state_0'" label="INFO" />
                 <my_ns:execute_program value="roscore" />
             </onentry>
-            <transition event="state_0.execute_program.success" target="state_0_1" />
+            <transition event="roscore.execute_program.success" target="state_0_1" />
             <onexit>
                 <log expr="'Exiting State: state_0'" label="INFO" />
             </onexit>
@@ -147,7 +147,7 @@
                 <log expr="'Entering State: state_0_1'" label="INFO" />
                 <my_ns:execute_program value="morse" />
             </onentry>
-            <transition event="state_0_1.execute_program.success" target="state_0_2" />
+            <transition event="morse.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
             </onexit>
@@ -157,7 +157,7 @@
                 <log expr="'Entering State: state_0_2'" label="INFO" />
                 <my_ns:execute_program value="image_view" />
             </onentry>
-            <transition event="state_0_2.execute_program.success" target="state_0_3" />
+            <transition event="image_view.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -167,7 +167,7 @@
                 <log expr="'Entering State: state_0_3'" label="INFO" />
                 <my_ns:execute_program value="log_human_pose" />
             </onentry>
-            <transition event="state_0_3.execute_program.success" target="state_0_4" />
+            <transition event="log_human_pose.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -177,7 +177,7 @@
                 <log expr="'Entering State: state_0_4'" label="INFO" />
                 <my_ns:execute_program value="start_human" />
             </onentry>
-            <transition event="state_0_4.execute_program.success" target="state_0_5" />
+            <transition event="start_human.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -187,7 +187,7 @@
                 <log expr="'Entering State: state_0_5'" label="INFO" />
                 <my_ns:execute_program value="start_robot" />
             </onentry>
-            <transition event="state_0_5.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="start_robot.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -219,7 +219,7 @@
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
                 <my_ns:execute_program value="clean_logs" />
             </onentry>
-            <transition event="assessment_state_0.execute_program.success" target="assessment_state_0_1" />
+            <transition event="clean_logs.execute_program.success" target="assessment_state_0_1" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
@@ -229,7 +229,7 @@
                 <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
                 <my_ns:execute_program value="assess_human_log" />
             </onentry>
-            <transition event="assessment_state_0_1.execute_program.success" target="assessment_state_0_2" />
+            <transition event="assess_human_log.execute_program.success" target="assessment_state_0_2" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
             </onexit>
@@ -239,7 +239,7 @@
                 <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
                 <my_ns:execute_program value="plot_path" />
             </onentry>
-            <transition event="assessment_state_0_2.execute_program.success" target="assessment_state_0_3" />
+            <transition event="plot_path.execute_program.success" target="assessment_state_0_3" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
             </onexit>
@@ -249,7 +249,7 @@
                 <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
                 <my_ns:execute_program value="plot_display" />
             </onentry>
-            <transition event="assessment_state_0_3.execute_program.success" target="assessment_state_0_4" />
+            <transition event="plot_display.execute_program.success" target="assessment_state_0_4" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
             </onexit>
@@ -259,7 +259,7 @@
                 <log expr="'Entering State: assessment_state_0_4'" label="INFO" />
                 <my_ns:execute_program value="check_position" />
             </onentry>
-            <transition event="assessment_state_0_4.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="check_position.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_4'" label="INFO" />
             </onexit>
