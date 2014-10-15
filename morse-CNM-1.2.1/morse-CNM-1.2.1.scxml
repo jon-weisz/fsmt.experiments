@@ -45,8 +45,8 @@
                 </check_execution>
             </component>
             <component val="test">
-                <command val="$RELEASE_PREFIX/bin/assess_cat_log.sh" />
-                <path val="/bin/bash/" />
+                <command val="sh $RELEASE_PREFIX/bin/assess_cat_log.sh" />
+                <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="0" ongoing="False" timeout="2" val="stdout" />
