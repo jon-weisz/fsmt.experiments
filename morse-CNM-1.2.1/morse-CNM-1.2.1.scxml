@@ -33,8 +33,7 @@
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="MOUSE LOST!" ongoing="True" timeout="2" val="pid" />
-                    <check_type blocking=" False" criteria="" ongoing=" True" timeout=" 2" val=" stdoutexclude" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
             <component val="mouse">
@@ -43,6 +42,14 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
+            <component val="test">
+                <command val="$RELEASE_PREFIX/bin/assess_cat_log.sh" />
+                <path val="/bin/bash/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="0" ongoing="False" timeout="2" val="stdout" />
                 </check_execution>
             </component>
         </data>
@@ -121,9 +128,9 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="morse" />
+                <my_ns:execute_program value="test" />
             </onentry>
-            <transition event="morse.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="test.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
