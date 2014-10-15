@@ -2,4 +2,4 @@
 
 cat $FSMBASE/logs/cat.log | grep "MOUSE LOST!"
 
-sleep 10
+sleep 60
