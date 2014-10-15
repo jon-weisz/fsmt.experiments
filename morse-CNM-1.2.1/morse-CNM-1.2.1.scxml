@@ -49,7 +49,8 @@
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="MOUSE LOST!" ongoing="True" timeout="0" val="stdoutexclude" />
+                    <check_type blocking="True" criteria="MOUSE LOST!" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking=" False" criteria="" ongoing=" False" timeout="2" val=" stdoutexclude" />
                 </check_execution>
             </component>
         </data>
