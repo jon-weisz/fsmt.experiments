@@ -33,6 +33,7 @@ def main():
                 v_w = {"v": 1.5, "w": -1}
             else:
                 v_w = {"v": 0, "w": -1}
+                print "MOUSE LOST!"
             motion.publish(v_w)
 
 if __name__ == "__main__":

@@ -31,9 +31,9 @@ mouse.translate(x=1.0, z=0.2)
 m_motion = MotionVW()
 mouse.append(m_motion)
 
-# keyboard = Keyboard()
-# keyboard.properties(Speed=3.0)
-# mouse.append(keyboard)
+keyboard = Keyboard()
+keyboard.properties(Speed=3.0)
+mouse.append(keyboard)
 
 m_motion.add_stream('socket')
 

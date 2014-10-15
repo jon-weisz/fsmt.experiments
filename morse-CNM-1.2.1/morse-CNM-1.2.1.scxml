@@ -28,8 +28,17 @@
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
-            <component val="cnm">
+            <component val="cat">
                 <command val="python3.2 $RELEASE_PREFIX/bin/cat_script.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="MOUSE LOST!" ongoing="True" timeout="2" val="pid" />
+                    <check_type blocking=" False" criteria="" ongoing=" True" timeout=" 2" val=" stdoutexclude" />
+                </check_execution>
+            </component>
+            <component val="mouse">
+                <command val="python3.2 $RELEASE_PREFIX/bin/mouse_script.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -70,21 +79,31 @@
         <state id="state_0_1">
             <onentry>
                 <log expr="'Entering State: state_0_1'" label="INFO" />
-                <my_ns:execute_program value="cnm" />
+                <my_ns:execute_program value="cat" />
             </onentry>
-            <transition event="cnm.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="cat.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
             </onexit>
         </state>
+        <state id="state_0_2">
+            <onentry>
+                <log expr="'Entering State: state_0_2'" label="INFO" />
+                <my_ns:execute_program value="mouse" />
+            </onentry>
+            <transition event="mouse.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_2'" label="INFO" />
+            </onexit>
+        </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
-                <send delay="'10s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 15 seconds)'" label="INFO" />
+                <send delay="'15s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 15 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
