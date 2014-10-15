@@ -9,7 +9,7 @@ from pymorse import Morse
 def main():
     """ Use the semantic cameras to locate the target and follow it """
     with Morse() as morse:
-        motion = morse.mouse.motion
+        motion = morse.mouse.m_motion
 
         while True:
             v_w = {"v": 1, "w": 0.3}
