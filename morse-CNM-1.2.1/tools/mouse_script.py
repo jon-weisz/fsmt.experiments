@@ -12,7 +12,7 @@ def main():
         motion = morse.mouse.m_motion
 
         while True:
-            v_w = {"v": 1, "w": 0.3}
+            v_w = {"v": 1.2, "w": 0.3}
             time.sleep(0.5)
             motion.publish(v_w)
 
