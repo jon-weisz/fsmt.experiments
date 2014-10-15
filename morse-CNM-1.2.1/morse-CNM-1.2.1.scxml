@@ -20,7 +20,7 @@
                 </check_execution>
             </component>
             <component val="morse">
-                <command val="morse run --geometry 1280x800 $RELEASE_PREFIX/share/morse/examples/tutorials/cat_mouse_game.py" />
+                <command val="morse run --geometry 1280x800 $RELEASE_PREFIX/bin/cat_mouse_game.py" />
                 <path val="$RELEASE_PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
