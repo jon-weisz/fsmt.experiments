@@ -28,6 +28,14 @@
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
+            <component val="cnm">
+                <command val="python3.2 $RELEASE_PREFIX/bin/cat_script.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -54,9 +62,19 @@
                 <log expr="'Entering State: state_0'" label="INFO" />
                 <my_ns:execute_program value="morse" />
             </onentry>
-            <transition event="morse.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="morse.execute_program.success" target="state_0_1" />
             <onexit>
                 <log expr="'Exiting State: state_0'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_1">
+            <onentry>
+                <log expr="'Entering State: state_0_1'" label="INFO" />
+                <my_ns:execute_program value="cnm" />
+            </onentry>
+            <transition event="cnm.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_1'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">

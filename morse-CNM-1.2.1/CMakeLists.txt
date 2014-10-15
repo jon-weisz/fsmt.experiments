@@ -14,7 +14,8 @@ IF (CMAKE_INSTALL_PREFIX)
 ENDIF()
 
 ### Glob, then install the files ###
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/cat_script.py"  DESTINATION ${PREFIX}/bin/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/morse-CNM-1.2.1.ini"   DESTINATION ${PREFIX}/etc/fsmt-experiments/morse-CNM-1.2.1/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/morse-CNM-1.2.1.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/morse-CNM-1.2.1/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/cat_script.py"      DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/cat_mouse_game.py"  DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/morse-CNM-1.2.1.ini"      DESTINATION ${PREFIX}/etc/fsmt-experiments/morse-CNM-1.2.1/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/morse-CNM-1.2.1.scxml"    DESTINATION ${PREFIX}/etc/fsmt-experiments/morse-CNM-1.2.1/)
 
