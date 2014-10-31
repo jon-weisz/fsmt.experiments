@@ -1,7 +1,7 @@
 ### Maintainer: flier[@techfak.uni-bielefeld.de] ###
 
 cmake_minimum_required(VERSION 2.8)
-PROJECT(icub-nightly)
+PROJECT(icub-main-nightly)
 SET(CMAKE_BUILD_TYPE distribution)
 
 MESSAGE("-- You are building on: ${CMAKE_SYSTEM_NAME}")
@@ -14,6 +14,6 @@ IF (CMAKE_INSTALL_PREFIX)
 ENDIF()
 
 ### Glob, then install the files ###
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-nightly-simple-motor-control.py" DESTINATION ${PREFIX}/bin/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-simple-motor-control.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-simple-motor-control.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-main-nightly-smc.py" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-main-nightly-smc.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-main-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-main-nightly-smc.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-main-nightly/)
