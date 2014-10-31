@@ -5,6 +5,7 @@ __author__ = 'flier'
 # I just made the syntax a little more "pythonic" and removed ";"
 
 import yarp
+import time
 
 yarp.Network.init()
 
@@ -43,7 +44,13 @@ tmp.set(1, tmp.get(1)+10)
 tmp.set(2, tmp.get(2)+10)
 tmp.set(3, tmp.get(3)+10)
 
+print 'Setting new Joint values to n+10'
+
 i_pos.positionMove(tmp.data())
+
+time.sleep(5)
+
+print 'Setting inital Joint values'
 
 # Wait some time then go back to initial position
 i_pos.positionMove(encs.data())
