@@ -29,14 +29,14 @@ jnts = i_pos.getAxes()
 print '>> Controlling', jnts, 'joints'
 
 # Read encoders
-encs = yarp.Vector(jnts)
+encoders = yarp.Vector(jnts)
 
-i_enc.getEncoders(encs.data())
+i_enc.getEncoders(encoders.data())
 
 # Store as home position
-home = yarp.Vector(jnts, encs.data())
+home = yarp.Vector(jnts, encoders.data())
 
-# Initialize a new tmp vector identical to encs
+# Initialize a new tmp vector identical to encoders
 tmp = yarp.Vector(jnts)
 
 tmp.set(0, tmp.get(0)+10)
@@ -52,7 +52,7 @@ time.sleep(5)
 
 print '>> Setting inital Joint values'
 
-# Wait some time then go back to initial position
-i_pos.positionMove(home.data())
+# Go back to initial position
+i_pos.positionMove(encoders.data())
 
 print '>> Exiting'
