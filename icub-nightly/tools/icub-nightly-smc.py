@@ -52,7 +52,14 @@ time.sleep(5)
 
 print '>> Setting inital Joint values'
 
+tmp = yarp.Vector(jnts)
+
+tmp.set(0, tmp.get(0)-10)
+tmp.set(1, tmp.get(1)-10)
+tmp.set(2, tmp.get(2)-10)
+tmp.set(3, tmp.get(3)-10)
+
 # Go back to initial position
-i_pos.positionMove(encoders.data())
+i_pos.positionMove(tmp.data())
 
 print '>> Exiting'
