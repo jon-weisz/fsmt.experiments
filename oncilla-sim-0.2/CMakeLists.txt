@@ -10,7 +10,7 @@ MESSAGE("-- If you don't set -DCMAKE_INSTALL_PREFIX defaults are used.")
 SET(PREFIX "/usr/local")
 IF (CMAKE_INSTALL_PREFIX)
     SET(PREFIX ${CMAKE_INSTALL_PREFIX})
-    MESSAGE("-- Found install PREFIX: "${PREFIX})
+    MESSAGE("-- Found install PREFIX: " ${PREFIX})
 ENDIF()
 
 ### Glob, then install the files ###
