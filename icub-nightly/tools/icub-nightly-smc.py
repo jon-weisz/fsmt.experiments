@@ -44,7 +44,7 @@ tmp.set(1, tmp.get(1)+45)
 tmp.set(2, tmp.get(2)+20)
 tmp.set(3, tmp.get(3)+10)
 
-print '>> Setting new Joint values to X(n)+10'
+print '>> Setting new Joint values'
 
 i_pos.positionMove(tmp.data())
 
@@ -52,14 +52,14 @@ time.sleep(5)
 
 print '>> Setting inital Joint values'
 
-tmp = yarp.Vector(jnts)
+tmp_n = yarp.Vector(jnts)
 
-tmp.set(0, tmp.get(0)-45)
-tmp.set(1, tmp.get(1)-45)
-tmp.set(2, tmp.get(2)-20)
-tmp.set(3, tmp.get(3)-10)
+tmp_n.set(0, tmp.get(0)-45)
+tmp_n.set(1, tmp.get(1)-45)
+tmp_n.set(2, tmp.get(2)-20)
+tmp_n.set(3, tmp.get(3)-10)
 
 # Go back to initial position
-i_pos.positionMove(tmp.data())
+i_pos.positionMove(tmp_n.data())
 
 print '>> Exiting'
