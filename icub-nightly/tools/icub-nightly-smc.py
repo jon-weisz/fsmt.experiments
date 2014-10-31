@@ -53,4 +53,4 @@ time.sleep(5)
 print 'Setting inital Joint values'
 
 # Wait some time then go back to initial position
-i_pos.positionMove(encs.data())
+i_pos.positionMove(home.data())
