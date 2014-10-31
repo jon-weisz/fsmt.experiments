@@ -35,8 +35,16 @@
                     <check_type blocking="True" criteria="Finished creating 3D Model" ongoing="False" timeout="15" val="stdout" />
                 </check_execution>
             </component>
+            <component val="python-motor-control">
+                <command val="python2.7 $prefix/bin/icub-nightly-smc.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
             <component val="gedit">
-                <command val="gedit" />
+                <command val="gedit $prefix/bin/icub-nightly-smc.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -79,9 +87,19 @@
                 <log expr="'Entering State: state_0_1'" label="INFO" />
                 <my_ns:execute_program value="icubsim" />
             </onentry>
-            <transition event="icubsim.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="icubsim.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_2">
+            <onentry>
+                <log expr="'Entering State: state_0_2'" label="INFO" />
+                <my_ns:execute_program value="python-motor-control" />
+            </onentry>
+            <transition event="python-motor-control.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
