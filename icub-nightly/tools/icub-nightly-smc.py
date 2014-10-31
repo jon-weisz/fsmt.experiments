@@ -39,7 +39,7 @@ home = yarp.Vector(jnts, encoders.data())
 # Initialize a new tmp vector identical to encoders
 tmp = yarp.Vector(jnts)
 
-tmp.set(0, tmp.get(0)+90)
+tmp.set(0, tmp.get(0)+45)
 tmp.set(1, tmp.get(1)+45)
 tmp.set(2, tmp.get(2)+20)
 tmp.set(3, tmp.get(3)+10)
@@ -54,7 +54,7 @@ print '>> Setting inital Joint values'
 
 tmp = yarp.Vector(jnts)
 
-tmp.set(0, tmp.get(0)-90)
+tmp.set(0, tmp.get(0)-45)
 tmp.set(1, tmp.get(1)-45)
 tmp.set(2, tmp.get(2)-20)
 tmp.set(3, tmp.get(3)-10)
