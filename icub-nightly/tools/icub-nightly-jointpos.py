@@ -35,7 +35,7 @@ while True:
     i_enc.getEncoders(encoders.data())
     tmp = yarp.Vector(jnts)
 
-    print tmp
+    print "All", tmp
     print "right_arm 0, %.4f" % tmp.get(0)
     print "right_arm 1, %.4f" % tmp.get(1)
     print "right_arm 2, %.4f" % tmp.get(2)
