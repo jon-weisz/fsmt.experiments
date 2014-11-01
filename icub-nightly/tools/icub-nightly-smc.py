@@ -52,12 +52,16 @@ time.sleep(5)
 
 print '>> Setting inital Joint values'
 
+encoders = yarp.Vector(jnts)
+
+i_enc.getEncoders(encoders.data())
+
 tmp_n = yarp.Vector(jnts)
 
-tmp_n.set(0, tmp.get(0)-40)
-tmp_n.set(1, tmp.get(1)-30)
-tmp_n.set(2, tmp.get(2)-20)
 tmp_n.set(3, tmp.get(3)-10)
+tmp_n.set(2, tmp.get(2)-20)
+tmp_n.set(1, tmp.get(1)-30)
+tmp_n.set(0, tmp.get(0)-40)
 
 # Go back to initial position
 i_pos.positionMove(tmp_n.data())

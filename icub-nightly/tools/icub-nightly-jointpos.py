@@ -31,6 +31,7 @@ encoders = yarp.Vector(jnts)
 
 # Print Joint Values
 while True:
+
     i_enc.getEncoders(encoders.data())
     tmp = yarp.Vector(jnts)
 
