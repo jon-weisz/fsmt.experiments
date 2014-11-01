@@ -39,7 +39,7 @@ home = yarp.Vector(jnts, encoders.data())
 # Initialize a new tmp vector identical to encoders
 tmp = yarp.Vector(jnts)
 
-tmp.set(0, tmp.get(0)+40)
+tmp.set(0, tmp.get(0)+90)
 tmp.set(1, tmp.get(1)+30)
 tmp.set(2, tmp.get(2)+20)
 tmp.set(3, tmp.get(3)+10)
@@ -58,7 +58,7 @@ i_enc.getEncoders(encoders.data())
 
 tmp_n = yarp.Vector(jnts)
 
-tmp_n.set(3, tmp.get(3)-10)
+tmp_n.set(3, tmp.get(3)-90)
 tmp_n.set(2, tmp.get(2)-20)
 tmp_n.set(1, tmp.get(1)-30)
 tmp_n.set(0, tmp.get(0)-40)
