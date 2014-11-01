@@ -12,7 +12,7 @@ yarp.Network.init()
 # Prepare a property object
 props = yarp.Property()
 props.put("device", "remote_controlboard")
-props.put("local", "/client/right_arm")
+props.put("local", "/client_put/right_arm")
 props.put("remote", "/icubSim/right_arm")
 
 # Create remote driver

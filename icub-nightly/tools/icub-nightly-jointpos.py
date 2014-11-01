@@ -12,7 +12,7 @@ yarp.Network.init()
 # Prepare a property object
 props = yarp.Property()
 props.put("device", "remote_controlboard")
-props.put("local", "/client_2/right_arm")
+props.put("local", "/client_poll/right_arm")
 props.put("remote", "/icubSim/right_arm")
 
 # Create remote driver
@@ -34,9 +34,9 @@ while True:
     i_enc.getEncoders(encoders.data())
     tmp = yarp.Vector(jnts)
 
-    print "%.4f" % tmp.get(0)
-    print "%.4f" % tmp.get(1)
-    print "%.4f" % tmp.get(2)
-    print "%.4f" % tmp.get(3)
+    print "right_arm 0, %.4f" % tmp.get(0)
+    print "right_arm 1, %.4f" % tmp.get(1)
+    print "right_arm 2, %.4f" % tmp.get(2)
+    print "right_arm 3, %.4f" % tmp.get(3)
 
     time.sleep(0.3)
