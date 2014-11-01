@@ -44,7 +44,7 @@
                 </check_execution>
             </component>
             <component val="poll-icub-joints">
-                <command val="gedit $prefix/bin/icub-nightly-jointpos.py" />
+                <command val="python2.7 $prefix/bin/icub-nightly-jointpos.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
