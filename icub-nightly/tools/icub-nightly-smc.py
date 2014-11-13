@@ -1,4 +1,4 @@
-__author__ = 'flier'
+__author__ = 'flier@techfak.uni-bielefeld.de'
 
 # Example taken from :
 # http://wiki.icub.org/iCub_documentation/python-motor-control_8py_source.html
@@ -49,17 +49,5 @@ print '>> Setting new Joint values'
 i_pos.positionMove(tmp.data())
 
 time.sleep(5)
-
-print '>> Setting inital Joint values'
-
-tmp_n = yarp.Vector(jnts)
-
-tmp_n.set(0, tmp.get(0)-45)
-tmp_n.set(1, tmp.get(1)-45)
-tmp_n.set(2, tmp.get(2)-20)
-tmp_n.set(3, tmp.get(3)-10)
-
-# Go back to initial position
-i_pos.positionMove(tmp_n.data())
 
 print '>> Exiting'
