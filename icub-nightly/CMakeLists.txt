@@ -15,5 +15,6 @@ ENDIF()
 
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-nightly-smc.py" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-nightly-jointpos.py" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-smc.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-smc.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)

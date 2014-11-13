@@ -1,4 +1,4 @@
-__author__ = 'flier@techfak.uni-bielefeld.de'
+__author__ = 'flier'
 
 # Example taken from :
 # http://wiki.icub.org/iCub_documentation/python-motor-control_8py_source.html
@@ -12,7 +12,7 @@ yarp.Network.init()
 # Prepare a property object
 props = yarp.Property()
 props.put("device", "remote_controlboard")
-props.put("local", "/client/right_arm")
+props.put("local", "/client_poll/right_arm")
 props.put("remote", "/icubSim/right_arm")
 
 # Create remote driver
@@ -26,28 +26,18 @@ i_enc = arm_driver.viewIEncoders()
 # Retrieve number of joints
 jnts = i_pos.getAxes()
 
-print '>> Controlling', jnts, 'joints'
-
 # Read encoders
 encoders = yarp.Vector(jnts)
 
-i_enc.getEncoders(encoders.data())
+# Print Joint Values
+while True:
 
-# Store as home position
-home = yarp.Vector(jnts, encoders.data())
+    i_enc.getEncoders(encoders.data())
+    tmp = yarp.Vector(jnts)
 
-# Initialize a new tmp vector identical to encoders
-tmp = yarp.Vector(jnts)
+    print "right_arm 0, %.4f" % tmp.get(0)
+    print "right_arm 1, %.4f" % tmp.get(1)
+    print "right_arm 2, %.4f" % tmp.get(2)
+    print "right_arm 3, %.4f" % tmp.get(3)
 
-tmp.set(0, tmp.get(0)+45)
-tmp.set(1, tmp.get(1)+45)
-tmp.set(2, tmp.get(2)+20)
-tmp.set(3, tmp.get(3)+10)
-
-print '>> Setting new Joint values'
-
-i_pos.positionMove(tmp.data())
-
-time.sleep(5)
-
-print '>> Exiting'
+    time.sleep(0.3)

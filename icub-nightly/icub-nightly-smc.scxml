@@ -43,6 +43,14 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="poll-icub-joints">
+                <command val="python2.7 $prefix/bin/icub-nightly-jointpos.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="criteria =" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
             <component val="gedit">
                 <command val="gedit $prefix/bin/icub-nightly-smc.py" />
                 <path val="/usr/bin/" />
@@ -95,21 +103,31 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="python-motor-control" />
+                <my_ns:execute_program value="poll-icub-joints" />
             </onentry>
-            <transition event="python-motor-control.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="poll-icub-joints.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
         </state>
+        <state id="state_0_3">
+            <onentry>
+                <log expr="'Entering State: state_0_3'" label="INFO" />
+                <my_ns:execute_program value="python-motor-control" />
+            </onentry>
+            <transition event="python-motor-control.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_3'" label="INFO" />
+            </onexit>
+        </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 30 seconds)'" label="INFO" />
-                <send delay="'30s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 15 seconds)'" label="INFO" />
+                <send delay="'15s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 30 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 15 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
