@@ -4,7 +4,7 @@
           gridy="0"
           hspan="1"
           vspan="1"
-          title="Plot 00"
+          title="Head State"
           size="60"
           minval="-100"
           maxval="100"
@@ -20,7 +20,7 @@
           gridy="1"
           hspan="1"
           vspan="2"
-          title="Plot 01"
+          title="Arm States"
           minval="-100"
           maxval="100"
           bgcolor="LightGrey">
