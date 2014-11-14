@@ -93,7 +93,7 @@
                 </check_execution>
             </component>
             <component val="plot-right-arm">
-                <command val="sh $prefix/bin/icub-plot-right-arm.sh /tmp/$USER/$FSMTRA/logs/right_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
+                <command val="sh $prefix/bin/icub-plot-right-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/right_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -101,7 +101,7 @@
                 </check_execution>
             </component>
             <component val="plot-left-arm">
-                <command val="sh $prefix/bin/icub-plot-left-arm.sh /tmp/$USER/$FSMTRA/logs/left_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
+                <command val="sh $prefix/bin/icub-plot-left-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/left_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
