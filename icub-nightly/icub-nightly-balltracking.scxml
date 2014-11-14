@@ -298,9 +298,9 @@
         <state id="assessment_state_0_2">
             <onentry>
                 <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
-                <my_ns:execute_program value="sleep" />
+                <my_ns:execute_program value="view-right-plot" />
             </onentry>
-            <transition event="sleep.execute_program.success" target="assessment_state_0_3" />
+            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_3" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
             </onexit>
@@ -308,21 +308,11 @@
         <state id="assessment_state_0_3">
             <onentry>
                 <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
-                <my_ns:execute_program value="view-right-plot" />
-            </onentry>
-            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_4" />
-            <onexit>
-                <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
-            </onexit>
-        </state>
-        <state id="assessment_state_0_4">
-            <onentry>
-                <log expr="'Entering State: assessment_state_0_4'" label="INFO" />
                 <my_ns:execute_program value="view-left-plot" />
             </onentry>
             <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
-                <log expr="'Exiting State: assessment_state_0_4'" label="INFO" />
+                <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
             </onexit>
         </state>
         <state id="assessment_pre_exit_test_wait">
