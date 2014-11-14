@@ -8,6 +8,8 @@ yarp connect /icub/torso/state:o /iCubGui/torso:i
 yarp connect /icub/head/state:o /iCubGui/head:i
 yarp connect /icub/left_arm/state:o /iCubGui/left_leg:i
 
+echo "== Connected =="
+
 # Not used, yet.
 # /icub/camcalib/left/out
 # /icub/camcalib/right/out

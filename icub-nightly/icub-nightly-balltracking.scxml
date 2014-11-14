@@ -35,12 +35,29 @@
                     <check_type blocking="True" criteria="foot_right.obj" ongoing="False" timeout="15" val="stdout" />
                 </check_execution>
             </component>
+            <component val="datasetplayer">
+                <command val="dataSetPlayer --hidden" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="window should be now hidden" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
             <component val="player-load-data">
                 <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i 'load /homes/flier/experiment1/'" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="yarp: Port /icub/torso/state:o active" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="yarp-connect">
+                <command val="sh $prefix/bin/icub-yarp-connect.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="== Connected ==" ongoing="False" timeout="2" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
             <component val="player-play-data">
@@ -103,9 +120,9 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="player-load-data" />
+                <my_ns:execute_program value="yarp-connect" />
             </onentry>
-            <transition event="player-load-data.execute_program.success" target="state_0_3" />
+            <transition event="yarp-connect.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -113,21 +130,31 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="player-play-data" />
+                <my_ns:execute_program value="player-load-data" />
             </onentry>
-            <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="player-load-data.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
         </state>
+        <state id="state_0_4">
+            <onentry>
+                <log expr="'Entering State: state_0_4'" label="INFO" />
+                <my_ns:execute_program value="player-play-data" />
+            </onentry>
+            <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_4'" label="INFO" />
+            </onexit>
+        </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 15 seconds)'" label="INFO" />
-                <send delay="'15s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
+                <send delay="'10s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 15 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>

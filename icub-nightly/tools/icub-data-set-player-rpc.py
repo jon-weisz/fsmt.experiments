@@ -19,7 +19,7 @@ try:
     name_server = find_name_server.find_name_server()
     print "Nameserver is here:", name_server
 except:
-    name_server = ('localhost',10000)
+    name_server = ('localhost', 10000)
     print "Assuming Nameserver is here:", name_server
 
 port_name = sys.argv[1]
