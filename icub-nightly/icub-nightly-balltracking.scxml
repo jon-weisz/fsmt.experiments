@@ -28,7 +28,7 @@
                 </check_execution>
             </component>
             <component val="icubgui">
-                <command val="iCubGui" />
+                <command val="iCubGui --width 500" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -74,6 +74,30 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="player-play-data">
+                <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i play" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="left-eye-view">
+                <command val="yarpview --name /leftCam --RefreshTime 33" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="15" val="pid" />
+                </check_execution>
+            </component>
+            <component val="right-eye-view">
+                <command val="yarpview --name /rightCam --RefreshTime 33" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="15" val="pid" />
                 </check_execution>
             </component>
             <component val="gedit">
@@ -158,9 +182,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="yarp-connect" />
+                <my_ns:execute_program value="left-eye-view" />
             </onentry>
-            <transition event="yarp-connect.execute_program.success" target="state_0_6" />
+            <transition event="left-eye-view.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -168,21 +192,41 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="player-play-data" />
+                <my_ns:execute_program value="right-eye-view" />
             </onentry>
-            <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="right-eye-view.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
         </state>
+        <state id="state_0_7">
+            <onentry>
+                <log expr="'Entering State: state_0_7'" label="INFO" />
+                <my_ns:execute_program value="yarp-connect" />
+            </onentry>
+            <transition event="yarp-connect.execute_program.success" target="state_0_8" />
+            <onexit>
+                <log expr="'Exiting State: state_0_7'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_8">
+            <onentry>
+                <log expr="'Entering State: state_0_8'" label="INFO" />
+                <my_ns:execute_program value="player-play-data" />
+            </onentry>
+            <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
-                <send delay="'10s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 45 seconds)'" label="INFO" />
+                <send delay="'45s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 45 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -209,12 +253,12 @@
         </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 5 seconds)'" label="INFO" />
-                <send delay="'5s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 2 seconds)'" label="INFO" />
+                <send delay="'2s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 5 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 2 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
