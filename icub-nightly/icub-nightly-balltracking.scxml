@@ -64,8 +64,8 @@
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="== Connected ==" ongoing="False" timeout="1" val="pid" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 10" val=" stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking=" True" criteria="== Connected ==" ongoing=" False" timeout=" 10" val=" stdout" />
                 </check_execution>
             </component>
             <component val="player-play-data">
