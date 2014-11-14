@@ -11,11 +11,9 @@ yarp connect /icub/camcalib/right/out /rightCam
 
 echo "== Connected =="
 
-sleep 3
+sleep 10
 
 # Not used, yet.
-#
-#
 # /icub/inertial
 # yarp connect /icub/right_leg/state:o /iCubGui/right_leg:i
 # yarp connect /icub/left_leg/state:o /iCubGui/left_leg:i
