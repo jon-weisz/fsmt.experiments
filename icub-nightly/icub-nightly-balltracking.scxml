@@ -51,6 +51,14 @@
                     <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
                 </check_execution>
             </component>
+            <component val="sleep">
+                <command val="sh `sleep 10`" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
             <component val="yarp-connect">
                 <command val="sh $prefix/bin/icub-yarp-connect.sh" />
                 <path val="/bin/" />
@@ -130,9 +138,9 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="yarp-connect" />
+                <my_ns:execute_program value="player-load-data" />
             </onentry>
-            <transition event="yarp-connect.execute_program.success" target="state_0_4" />
+            <transition event="player-load-data.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -140,9 +148,9 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="player-load-data" />
+                <my_ns:execute_program value="sleep" />
             </onentry>
-            <transition event="player-load-data.execute_program.success" target="state_0_5" />
+            <transition event="sleep.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -150,11 +158,21 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
+                <my_ns:execute_program value="yarp-connect" />
+            </onentry>
+            <transition event="yarp-connect.execute_program.success" target="state_0_6" />
+            <onexit>
+                <log expr="'Exiting State: state_0_5'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_6">
+            <onentry>
+                <log expr="'Entering State: state_0_6'" label="INFO" />
                 <my_ns:execute_program value="player-play-data" />
             </onentry>
             <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_5'" label="INFO" />
+                <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
