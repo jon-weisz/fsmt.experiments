@@ -5,7 +5,7 @@
           hspan="1"
           vspan="1"
           title="Head State"
-          size="60"
+          size="250"
           minval="-100"
           maxval="100"
           bgcolor="LightSlateGrey">
@@ -17,10 +17,11 @@
                size="3" />
     </plot>
     <plot gridx="0"
-          gridy="1"
+          gridy="0"
           hspan="1"
-          vspan="2"
+          vspan="1"
           title="Arm States"
+	  size="250"
           minval="-100"
           maxval="100"
           bgcolor="LightGrey">
