@@ -92,9 +92,17 @@
                     <check_type blocking="True" criteria="" ongoing="True" timeout="15" val="pid" />
                 </check_execution>
             </component>
-            <component val="gedit">
-                <command val="gedit" />
-                <path val="/usr/bin/" />
+            <component val="plot-right-arm">
+                <command val="$prefix/icub-plot-right-arm.sh $FSMTRA/logs/right_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
+                <path val="/bin/sh" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot-left-arm">
+                <command val="$prefix/icub-plot-left-arm.sh $FSMTRA/logs/left_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
+                <path val="/bin/sh" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
@@ -236,21 +244,31 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="gedit" />
+                <my_ns:execute_program value="plot-left-arm" />
             </onentry>
-            <transition event="gedit.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="plot-left-arm.execute_program.success" target="assessment_state_0_1" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
         </state>
+        <state id="assessment_state_0_1">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
+                <my_ns:execute_program value="plot-right-arm" />
+            </onentry>
+            <transition event="plot-right-arm.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
+            </onexit>
+        </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 2 seconds)'" label="INFO" />
-                <send delay="'2s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 20 seconds)'" label="INFO" />
+                <send delay="'20s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 2 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 20 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
