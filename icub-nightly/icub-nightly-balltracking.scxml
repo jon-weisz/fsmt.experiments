@@ -93,7 +93,7 @@
                 </check_execution>
             </component>
             <component val="plot-right-arm">
-                <command val="sh $prefix/bin/icub-plot-right-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/right_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
+                <command val="sh $prefix/bin/icub-plot-right-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/right_arm.dump" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -101,8 +101,32 @@
                 </check_execution>
             </component>
             <component val="plot-left-arm">
-                <command val="sh $prefix/bin/icub-plot-left-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/left_arm.dump; eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
+                <command val="sh $prefix/bin/icub-plot-left-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/left_arm.dump" />
                 <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="view-left-plot">
+                <command val="eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="view-right-plot">
+                <command val="eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="yarpscope">
+                <command val="yarpscope --xml $prefix/share/icub-nightly-scope.xml" />
+                <path val="$prefix/bin" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
@@ -214,9 +238,19 @@
                 <log expr="'Entering State: state_0_8'" label="INFO" />
                 <my_ns:execute_program value="player-play-data" />
             </onentry>
-            <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="player-play-data.execute_program.success" target="state_0_9" />
             <onexit>
                 <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_9">
+            <onentry>
+                <log expr="'Entering State: state_0_9'" label="INFO" />
+                <my_ns:execute_program value="yarpscope" />
+            </onentry>
+            <transition event="yarpscope.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_9'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
@@ -256,19 +290,39 @@
                 <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
                 <my_ns:execute_program value="plot-right-arm" />
             </onentry>
-            <transition event="plot-right-arm.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="plot-right-arm.execute_program.success" target="assessment_state_0_2" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
             </onexit>
         </state>
+        <state id="assessment_state_0_2">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
+                <my_ns:execute_program value="view-right-plot" />
+            </onentry>
+            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_3" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_3">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
+                <my_ns:execute_program value="view-left-plot" />
+            </onentry>
+            <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
+            </onexit>
+        </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 20 seconds)'" label="INFO" />
-                <send delay="'20s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 30 seconds)'" label="INFO" />
+                <send delay="'30s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 20 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 30 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>

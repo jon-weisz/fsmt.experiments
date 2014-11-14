@@ -21,3 +21,4 @@ INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-plot-left-arm.sh" DESTI
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-plot-right-arm.sh" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-balltracking.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/icub-nightly-balltracking.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/icub-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-nightly-scope.xml" DESTINATION ${PREFIX}/share/)
