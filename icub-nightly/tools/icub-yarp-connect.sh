@@ -15,7 +15,7 @@ sleep 1
 
 `yarp read /icub-nightly/right_arm_dumper | tee $FSMBASE/logs/right_arm.dump` &
 `yarp read /icub-nightly/left_arm_dumper | tee $FSMBASE/logs/left_arm.dump` &
-`yarp connect /icub/right_arm/state:o /icub-nightly/right_arm_dumper > /dev/null 2>&`
+`yarp connect /icub/right_arm/state:o /icub-nightly/right_arm_dumper > /dev/null 2>&1`
 `yarp connect /icub/left_arm/state:o /icub-nightly/left_arm_dumper > /dev/null 2>&1`
 
 echo "== YARP Connected =="
