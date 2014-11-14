@@ -10,8 +10,12 @@ $prefix/bin/yarp connect /icub/torso/state:o /iCubGui/torso:i
 $prefix/bin/yarp connect /icub/head/state:o /iCubGui/head:i
 $prefix/bin/yarp connect /icub/camcalib/left/out /leftCam
 $prefix/bin/yarp connect /icub/camcalib/right/out /rightCam
-$prefix/bin/yarp read /icub-nightly/right_arm_dumper | tee $FSMBASE/logs/right_arm.dump &
-$prefix/bin/yarp read /icub-nightly/left_arm_dumper | tee $FSMBASE/logs/left_arm.dump &
+
+$prefix/bin/yarp read /icub-nightly/right_arm_dumper|tee $FSMBASE/logs/right_arm.dump &
+$prefix/bin/yarp read /icub-nightly/left_arm_dumper|tee $FSMBASE/logs/left_arm.dump &
+
+sleep 1
+
 $prefix/bin/yarp connect /icub/right_arm/state:o /icub-nightly/right_arm_dumper
 $prefix/bin/yarp connect /icub/left_arm/state:o /icub-nightly/left_arm_dumper
 
