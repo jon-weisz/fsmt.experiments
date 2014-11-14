@@ -11,6 +11,8 @@ yarp connect /icub/camcalib/right/out /rightCam
 
 echo "== Connected =="
 
+sleep 5
+
 # Not used, yet.
 #
 #
