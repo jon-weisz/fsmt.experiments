@@ -18,6 +18,12 @@ yarp connect /icub/left_arm/state:o /icub-nightly/left_arm_dumper &
 
 echo "== Connected =="
 
+while true; do
+    echo "Running..."
+    sleep 3
+done
+
+
 # Not used, yet.
 # /icub/inertial
 # yarp connect /icub/right_leg/state:o /iCubGui/right_leg:i
