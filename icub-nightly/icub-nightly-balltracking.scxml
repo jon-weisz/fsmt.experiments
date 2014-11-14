@@ -120,9 +120,9 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="yarp-connect" />
+                <my_ns:execute_program value="datasetplayer" />
             </onentry>
-            <transition event="yarp-connect.execute_program.success" target="state_0_3" />
+            <transition event="datasetplayer.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -130,9 +130,9 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="player-load-data" />
+                <my_ns:execute_program value="yarp-connect" />
             </onentry>
-            <transition event="player-load-data.execute_program.success" target="state_0_4" />
+            <transition event="yarp-connect.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -140,11 +140,21 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
+                <my_ns:execute_program value="player-load-data" />
+            </onentry>
+            <transition event="player-load-data.execute_program.success" target="state_0_5" />
+            <onexit>
+                <log expr="'Exiting State: state_0_4'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_5">
+            <onentry>
+                <log expr="'Entering State: state_0_5'" label="INFO" />
                 <my_ns:execute_program value="player-play-data" />
             </onentry>
             <transition event="player-play-data.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_4'" label="INFO" />
+                <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
