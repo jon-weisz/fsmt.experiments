@@ -40,7 +40,7 @@
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="window should be now hidden" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="window should be now hidden" ongoing="False" timeout="30" val="stdout" />
                 </check_execution>
             </component>
             <component val="player-load-data">
