@@ -255,12 +255,12 @@
         </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 90 seconds)'" label="INFO" />
-                <send delay="'90s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 80 seconds)'" label="INFO" />
+                <send delay="'80s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 90 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 80 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -298,9 +298,9 @@
         <state id="assessment_state_0_2">
             <onentry>
                 <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
-                <my_ns:execute_program value="view-right-plot" />
+                <my_ns:execute_program value="sleep" />
             </onentry>
-            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_3" />
+            <transition event="sleep.execute_program.success" target="assessment_state_0_3" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
             </onexit>
@@ -308,21 +308,31 @@
         <state id="assessment_state_0_3">
             <onentry>
                 <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
-                <my_ns:execute_program value="view-left-plot" />
+                <my_ns:execute_program value="view-right-plot" />
             </onentry>
-            <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_4" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
             </onexit>
         </state>
+        <state id="assessment_state_0_4">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_4'" label="INFO" />
+                <my_ns:execute_program value="view-left-plot" />
+            </onentry>
+            <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_4'" label="INFO" />
+            </onexit>
+        </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 30 seconds)'" label="INFO" />
-                <send delay="'30s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (collecting data for 20 seconds)'" label="INFO" />
+                <send delay="'20s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 30 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (collected data for 20 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
