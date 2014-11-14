@@ -24,7 +24,7 @@
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="Ok.  Ready!" ongoing="False" timeout="10" val="stdout" />
+                    <check_type blocking="True" criteria="Ok.  Ready!" ongoing="True" timeout="10" val="stdout" />
                 </check_execution>
             </component>
             <component val="icubgui">
@@ -32,7 +32,7 @@
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="foot_right.obj" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="foot_right.obj" ongoing="True" timeout="15" val="stdout" />
                 </check_execution>
             </component>
             <component val="datasetplayer">
@@ -89,7 +89,7 @@
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="" ongoing="False" timeout="15" val="pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="15" val="pid" />
                 </check_execution>
             </component>
             <component val="right-eye-view">
@@ -97,7 +97,7 @@
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="" ongoing="False" timeout="15" val="pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="15" val="pid" />
                 </check_execution>
             </component>
             <component val="gedit">
