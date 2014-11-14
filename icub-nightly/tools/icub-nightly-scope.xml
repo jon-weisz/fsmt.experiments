@@ -17,11 +17,11 @@
                size="3" />
     </plot>
     <plot gridx="0"
-          gridy="0"
+          gridy="1"
           hspan="1"
-          vspan="1"
+          vspan="2"
           title="Arm States"
-	  size="250"
+	      size="250"
           minval="-100"
           maxval="100"
           bgcolor="LightGrey">
