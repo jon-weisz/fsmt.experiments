@@ -5,7 +5,7 @@
           hspan="1"
           vspan="1"
           title="Head State"
-          size="250"
+          size="500"
           minval="-100"
           maxval="100"
           bgcolor="LightSlateGrey">
@@ -21,7 +21,7 @@
           hspan="1"
           vspan="2"
           title="Arm States"
-	      size="250"
+	      size="500"
           minval="-100"
           maxval="100"
           bgcolor="LightGrey">
