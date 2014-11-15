@@ -44,7 +44,7 @@
                 </check_execution>
             </component>
             <component val="player-load-data">
-                <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i 'load /homes/flier/experiment1/'" />
+                <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i 'load $prefix/share/dataset-icub-balltracking'" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
