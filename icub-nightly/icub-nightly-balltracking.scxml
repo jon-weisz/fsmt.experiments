@@ -25,6 +25,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="Ok.  Ready!" ongoing="False" timeout="10" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
                 </check_execution>
             </component>
             <component val="icubgui">
@@ -33,6 +34,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="foot_right.obj" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
                 </check_execution>
             </component>
             <component val="datasetplayer">
