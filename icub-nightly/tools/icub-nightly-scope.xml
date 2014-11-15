@@ -6,8 +6,8 @@
           vspan="1"
           title="Head State"
           size="500"
-          minval="-100"
-          maxval="100"
+          minval="-180"
+          maxval="180"
           bgcolor="LightSlateGrey">
         <graph remote="/icub/head/state:o"
                index="0"
@@ -22,8 +22,8 @@
           vspan="2"
           title="Arm States"
 	      size="500"
-          minval="-100"
-          maxval="100"
+          minval="-180"
+          maxval="180"
           bgcolor="LightGrey">
         <graph remote="/icub/right_arm/state:o"
                index="0"
