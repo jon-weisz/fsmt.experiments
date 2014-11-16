@@ -143,7 +143,7 @@
                 </check_execution>
             </component>
             <component val="yarpscope">
-                <command val="yarpscope --xml $prefix/share/icub-nightly-scope.xml --dx 800 --dx 600" />
+                <command val="yarpscope --xml $prefix/share/icub-nightly-scope.xml --dx 500 --dy 600" />
                 <path val="$prefix/bin" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
