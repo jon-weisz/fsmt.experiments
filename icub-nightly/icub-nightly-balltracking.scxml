@@ -61,6 +61,22 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="dump-left">
+                <command val="sh $prefix/bin/icub-yarp-dump-left-arm.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="dump-right">
+                <command val="sh $prefix/bin/icub-yarp-dump-right-arm.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
             <component val="yarp-connect">
                 <command val="bash $prefix/bin/icub-yarp-connect.sh" />
                 <path val="/bin/" />
@@ -228,9 +244,9 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
-                <my_ns:execute_program value="yarp-connect" />
+                <my_ns:execute_program value="dump-left" />
             </onentry>
-            <transition event="yarp-connect.execute_program.success" target="state_0_8" />
+            <transition event="dump-left.execute_program.success" target="state_0_8" />
             <onexit>
                 <log expr="'Exiting State: state_0_7'" label="INFO" />
             </onexit>
@@ -238,9 +254,9 @@
         <state id="state_0_8">
             <onentry>
                 <log expr="'Entering State: state_0_8'" label="INFO" />
-                <my_ns:execute_program value="player-play-data" />
+                <my_ns:execute_program value="dump-right" />
             </onentry>
-            <transition event="player-play-data.execute_program.success" target="state_0_9" />
+            <transition event="dump-right.execute_program.success" target="state_0_9" />
             <onexit>
                 <log expr="'Exiting State: state_0_8'" label="INFO" />
             </onexit>
@@ -248,11 +264,31 @@
         <state id="state_0_9">
             <onentry>
                 <log expr="'Entering State: state_0_9'" label="INFO" />
+                <my_ns:execute_program value="yarp-connect" />
+            </onentry>
+            <transition event="yarp-connect.execute_program.success" target="state_0_10" />
+            <onexit>
+                <log expr="'Exiting State: state_0_9'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_10">
+            <onentry>
+                <log expr="'Entering State: state_0_10'" label="INFO" />
+                <my_ns:execute_program value="player-play-data" />
+            </onentry>
+            <transition event="player-play-data.execute_program.success" target="state_0_11" />
+            <onexit>
+                <log expr="'Exiting State: state_0_10'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_11">
+            <onentry>
+                <log expr="'Entering State: state_0_11'" label="INFO" />
                 <my_ns:execute_program value="yarpscope" />
             </onentry>
             <transition event="yarpscope.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_9'" label="INFO" />
+                <log expr="'Exiting State: state_0_11'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
