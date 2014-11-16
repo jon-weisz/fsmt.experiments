@@ -54,8 +54,8 @@
                 </check_execution>
             </component>
             <component val="sleep">
-                <command val="sh `sleep 5`" />
-                <path val="/bin/" />
+                <command val="python2.7 $prefix/bin/fsmt_exsilent 5" />
+                <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
