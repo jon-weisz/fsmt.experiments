@@ -38,7 +38,7 @@
                 </check_execution>
             </component>
             <component val="datasetplayer">
-                <command val="dataSetPlayer --hidden" />
+                <command val="dataSetPlayer" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
