@@ -3,7 +3,7 @@
 /usr/bin/gnuplot <<__EOF
 reset
 set terminal png
-set xlabel "step [yarp]"
+set xlabel "frame [yarp]"
 set ylabel "joint value [degree]"
 set title "iCub-Nightly Balltracking right_arm"
 set key below
