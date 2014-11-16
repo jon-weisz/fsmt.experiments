@@ -38,7 +38,7 @@
                 </check_execution>
             </component>
             <component val="datasetplayer">
-                <command val="dataSetPlayer" />
+                <command val="dataSetPlayer --hidden" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -79,7 +79,7 @@
                 </check_execution>
             </component>
             <component val="left-eye-view">
-                <command val="yarpview --name /leftCam --RefreshTime 33 --width 640" />
+                <command val="yarpview --name /leftCam --RefreshTime 30 --width 640" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -87,7 +87,7 @@
                 </check_execution>
             </component>
             <component val="right-eye-view">
-                <command val="yarpview --name /rightCam --RefreshTime 33 --width 640" />
+                <command val="yarpview --name /rightCam --RefreshTime 30 --width 640" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
