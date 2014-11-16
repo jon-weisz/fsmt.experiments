@@ -7,7 +7,7 @@ set xlabel "step [yarp]"
 set ylabel "joint value [degree]"
 set title "iCub-Nightly Balltracking left_arm"
 # set key reverse Left outside
-set key 100,100
+set key below
 set grid
 set style data points
 set output '/tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png'
