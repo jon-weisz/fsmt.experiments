@@ -5,7 +5,7 @@ reset
 set terminal png
 set xlabel "frame [yarp]"
 set ylabel "joint value [degree]"
-set title "iCub-Nightly Balltracking left_arm"
+set title "iCub-Nightly Balltracking right_arm"
 set key below
 set grid
 set style data lines
