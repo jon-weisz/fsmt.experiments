@@ -1,0 +1,397 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="icub-nightly-balltracking" initial="initialise_test" version="1.0">
+    <datamodel>
+        <data id="environment">
+            <variable val="$PATH:$ICUBcontrib_DIR/bin" var="PATH" />
+            <variable val="$ICUBcontrib_DIR" var="CMAKE_PREFIX_PATH" />
+            <variable val="$prefix/share/yarp:$prefix/share/iCub:$prefix/share/ICUBcontrib" var="YARP_DATA_DIRS" />
+            <variable val="$prefix/lib/python2.7/dist-packages/:$PYTHONPATH" var="PYTHONPATH" />
+            <variable val="$prefix" var="ICUBcontrib_DIR" />
+        </data>
+        <data id="hosts">
+            <hostinfo ip="127.0.0.1" name="localhost" />
+        </data>
+        <data id="component_bundle">
+            <component val="default">
+                <command val="ls $FSMFSM" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="False" criteria="" ongoing="False" timeout="3" val="pid" />
+                </check_execution>
+            </component>
+            <component val="yarpserver">
+                <command val="yarpserver" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="Ok.  Ready!" ongoing="False" timeout="10" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                </check_execution>
+            </component>
+            <component val="icubgui">
+                <command val="iCubGui --width 500" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="foot_right.obj" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                </check_execution>
+            </component>
+            <component val="datasetplayer">
+                <command val="dataSetPlayer --hidden" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="yarp: Port /dataSetPlayer/rpc:i active" ongoing="False" timeout="30" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="player-load-data">
+                <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i 'load $prefix/share/dataset-icub-balltracking'" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="sleep">
+                <command val="python2.7 $prefix/bin/fsmt_exsilent 5" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="dump-left">
+                <command val="sh $prefix/bin/icub-yarp-dump-left-arm.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="dump-right">
+                <command val="sh $prefix/bin/icub-yarp-dump-right-arm.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="yarp-connect">
+                <command val="bash $prefix/bin/icub-yarp-connect.sh" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking=" True" criteria="== YARP Connected ==" ongoing=" False" timeout=" 10" val=" stdout" />
+                </check_execution>
+            </component>
+            <component val="player-play-data">
+                <command val="python2.7 $prefix/bin/icub-data-set-player-rpc.py /dataSetPlayer/rpc:i play" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                </check_execution>
+            </component>
+            <component val="left-eye-view">
+                <command val="yarpview --name /leftCam --RefreshTime 30 --width 640" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="15" val="pid" />
+                </check_execution>
+            </component>
+            <component val="right-eye-view">
+                <command val="yarpview --name /rightCam --RefreshTime 30 --width 640" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="15" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot-right-arm">
+                <command val="sh $prefix/bin/icub-plot-right-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/right_arm.dump" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="plot-left-arm">
+                <command val="sh $prefix/bin/icub-plot-left-arm.sh /tmp/$USER/fsmt/$FSMTRA/logs/left_arm.dump" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="view-left-plot">
+                <command val="eog /tmp/$USER/fsmt/$FSMTRA/icub-left-arm.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="view-right-plot">
+                <command val="eog /tmp/$USER/fsmt/$FSMTRA/icub-right-arm.png" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="yarpscope">
+                <command val="yarpscope --xml $prefix/share/icub-nightly-scope.xml --dx 500 --dy 600" />
+                <path val="$prefix/bin" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+        </data>
+    </datamodel>
+    <transition event="unsatisfied_criteria" target="criteria_error">
+        <log expr="'Received unsatisfied_criteria event!'" label="ERROR" />
+    </transition>
+    <transition event="external_abortion" target="abortion_error">
+        <log expr="'Received unsatisfied_criteria event!'" label="ERROR" />
+    </transition>
+    <transition event="execute_program.fail" target="execution_error">
+        <log expr="'Recieved execution_error event!'" label="ERROR" />
+    </transition>
+    <state id="initialise_test">
+        <onentry>
+            <log expr="'Entering State initialise_test'" label="INFO" />
+        </onentry>
+        <transition target="run_test" />
+        <onexit>
+            <log expr="'Exiting State: initialise_test'" label="INFO" />
+        </onexit>
+    </state>
+    <state id="run_test" initial="state_0">
+        <state id="state_0">
+            <onentry>
+                <log expr="'Entering State: state_0'" label="INFO" />
+                <my_ns:execute_program value="yarpserver" />
+            </onentry>
+            <transition event="yarpserver.execute_program.success" target="state_0_1" />
+            <onexit>
+                <log expr="'Exiting State: state_0'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_1">
+            <onentry>
+                <log expr="'Entering State: state_0_1'" label="INFO" />
+                <my_ns:execute_program value="icubgui" />
+            </onentry>
+            <transition event="icubgui.execute_program.success" target="state_0_2" />
+            <onexit>
+                <log expr="'Exiting State: state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_2">
+            <onentry>
+                <log expr="'Entering State: state_0_2'" label="INFO" />
+                <my_ns:execute_program value="datasetplayer" />
+            </onentry>
+            <transition event="datasetplayer.execute_program.success" target="state_0_3" />
+            <onexit>
+                <log expr="'Exiting State: state_0_2'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_3">
+            <onentry>
+                <log expr="'Entering State: state_0_3'" label="INFO" />
+                <my_ns:execute_program value="player-load-data" />
+            </onentry>
+            <transition event="player-load-data.execute_program.success" target="state_0_4" />
+            <onexit>
+                <log expr="'Exiting State: state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_4">
+            <onentry>
+                <log expr="'Entering State: state_0_4'" label="INFO" />
+                <my_ns:execute_program value="sleep" />
+            </onentry>
+            <transition event="sleep.execute_program.success" target="state_0_5" />
+            <onexit>
+                <log expr="'Exiting State: state_0_4'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_5">
+            <onentry>
+                <log expr="'Entering State: state_0_5'" label="INFO" />
+                <my_ns:execute_program value="left-eye-view" />
+            </onentry>
+            <transition event="left-eye-view.execute_program.success" target="state_0_6" />
+            <onexit>
+                <log expr="'Exiting State: state_0_5'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_6">
+            <onentry>
+                <log expr="'Entering State: state_0_6'" label="INFO" />
+                <my_ns:execute_program value="right-eye-view" />
+            </onentry>
+            <transition event="right-eye-view.execute_program.success" target="state_0_7" />
+            <onexit>
+                <log expr="'Exiting State: state_0_6'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_7">
+            <onentry>
+                <log expr="'Entering State: state_0_7'" label="INFO" />
+                <my_ns:execute_program value="dump-left" />
+            </onentry>
+            <transition event="dump-left.execute_program.success" target="state_0_8" />
+            <onexit>
+                <log expr="'Exiting State: state_0_7'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_8">
+            <onentry>
+                <log expr="'Entering State: state_0_8'" label="INFO" />
+                <my_ns:execute_program value="dump-right" />
+            </onentry>
+            <transition event="dump-right.execute_program.success" target="state_0_9" />
+            <onexit>
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_9">
+            <onentry>
+                <log expr="'Entering State: state_0_9'" label="INFO" />
+                <my_ns:execute_program value="yarp-connect" />
+            </onentry>
+            <transition event="yarp-connect.execute_program.success" target="state_0_10" />
+            <onexit>
+                <log expr="'Exiting State: state_0_9'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_10">
+            <onentry>
+                <log expr="'Entering State: state_0_10'" label="INFO" />
+                <my_ns:execute_program value="player-play-data" />
+            </onentry>
+            <transition event="player-play-data.execute_program.success" target="state_0_11" />
+            <onexit>
+                <log expr="'Exiting State: state_0_10'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_11">
+            <onentry>
+                <log expr="'Entering State: state_0_11'" label="INFO" />
+                <my_ns:execute_program value="yarpscope" />
+            </onentry>
+            <transition event="yarpscope.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_11'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="pre_result_assessment_wait">
+            <onentry>
+                <log expr="'Entering State: Wait (collecting data for 70 seconds)'" label="INFO" />
+                <send delay="'70s'" event="wait.finish" />
+            </onentry>
+            <transition event="wait.finish" target="result_assessment" />
+            <onexit>
+                <log expr="'Exiting State: Wait (collected data for 70 seconds)'" label="INFO" />
+            </onexit>
+        </state>
+    </state>
+    <state id="result_assessment" initial="clean">
+        <state id="clean">
+            <onentry>
+                <log expr="'Entering State: Cleanup components'" label="INFO" />
+                <my_ns:cleanUp expr="executable" value="" />
+            </onentry>
+            <transition target="assessment_state_0" />
+            <onexit>
+                <log expr="'Exiting State: Done cleaning up'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0'" label="INFO" />
+                <my_ns:execute_program value="plot-right-arm" />
+            </onentry>
+            <transition event="plot-right-arm.execute_program.success" target="assessment_state_0_1" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_1">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
+                <my_ns:execute_program value="plot-left-arm" />
+            </onentry>
+            <transition event="plot-left-arm.execute_program.success" target="assessment_state_0_2" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_2">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_2'" label="INFO" />
+                <my_ns:execute_program value="view-right-plot" />
+            </onentry>
+            <transition event="view-right-plot.execute_program.success" target="assessment_state_0_3" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_2'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_3">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
+                <my_ns:execute_program value="view-left-plot" />
+            </onentry>
+            <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_pre_exit_test_wait">
+            <onentry>
+                <log expr="'Entering State: Wait (collecting data for 15 seconds)'" label="INFO" />
+                <send delay="'15s'" event="wait.finish" />
+            </onentry>
+            <transition event="wait.finish" target="exit_test" />
+            <onexit>
+                <log expr="'Exiting State: Wait (collected data for 15 seconds)'" label="INFO" />
+            </onexit>
+        </state>
+    </state>
+    <state id="criteria_error">
+        <onentry>
+            <log expr="'criteria_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="criteria" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <state id="execution_error">
+        <onentry>
+            <log expr="'execution_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="executionFail" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <state id="abortion_error">
+        <onentry>
+            <log expr="'execution_error state entered - Exiting!'" label="ERROR" />
+            <my_ns:error value="abortion" />
+        </onentry>
+        <transition target="exit_test" />
+    </state>
+    <final id="exit_test">
+        <onentry>
+            <log expr="'Entering State: exit_test'" label="INFO" />
+            <my_ns:cleanUp expr="executable" value="" />
+        </onentry>
+        <onexit>
+            <log expr="'Exiting State: exit_test'" label="INFO" />
+        </onexit>
+    </final>
+</scxml>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<portscope rows="1" columns="2" carrier="mcast">
+    <plot gridx="0"
+          gridy="0"
+          hspan="1"
+          vspan="1"
+          title="Head State"
+          size="500"
+          minval="-180"
+          maxval="180"
+          bgcolor="LightSlateGrey">
+        <graph remote="/icub/head/state:o"
+               index="0"
+               color="Red"
+               title="Head State"
+               type="lines"
+               size="3" />
+    </plot>
+    <plot gridx="0"
+          gridy="1"
+          hspan="1"
+          vspan="2"
+          title="Arm States"
+	      size="500"
+          minval="-180"
+          maxval="180"
+          bgcolor="LightGrey">
+        <graph remote="/icub/right_arm/state:o"
+               index="0"
+               color="Red"
+               title="Right Arm"
+               type="lines" />
+        <graph remote="/icub/left_arm/state:o"
+               index="1"
+               color="Magenta"
+               title="Left Arm"
+               type="lines" />
+    </plot>
+</portscope>
