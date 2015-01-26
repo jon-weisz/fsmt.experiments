@@ -42,8 +42,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="node: WayPoint20" ongoing="False" timeout="15" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                    <check_type blocking="True" criteria="done" ongoing="False" timeout="10" val="stdout" />
                 </check_execution>
             </component>
             <component val="rs_morse_simulation">
