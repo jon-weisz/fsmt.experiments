@@ -1,11 +1,11 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="icub-humanoids-balltracking" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
-            <variable val="$PATH:$prefix/bin/" var="PATH" />
+            <variable val="$PATH:$prefix/bin/:/opt/morse-blender-2.65-py-3.3/bin/" var="PATH" />
             <variable val="$prefix" var="PREFIX" />
             <variable val="$ROS_DISTRO" var="ROS" />
             <variable val="/opt/morse-blender-2.65-py-3.3/bin/blender" var="MORSE_BLENDER" />
-            <variable val="$prefix/lib/python2.7/dist-packages/:$PYTHONPATH" var="PYTHONPATH" />
+            <variable val="localhost:0" var="DISPLAY" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
