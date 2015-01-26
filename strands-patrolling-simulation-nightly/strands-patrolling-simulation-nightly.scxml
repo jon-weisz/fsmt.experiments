@@ -60,7 +60,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="odom received!" ongoing="False" timeout="120" val="stdout" />
+                    <check_type blocking="True" criteria="odom received!" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
                 </check_execution>
             </component>
@@ -69,7 +69,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="120" val="stdout" />
+                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
@@ -78,7 +78,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="120" val="stdout" />
+                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
@@ -96,7 +96,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="120" val="stdout" />
+                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
