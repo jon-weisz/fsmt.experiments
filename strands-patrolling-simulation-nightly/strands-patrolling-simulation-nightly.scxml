@@ -41,9 +41,9 @@
                 <command val="rosrun topological_utils insert_map.py $(rospack find strands_uol_sim)/resources/mht.tpl robolab mht" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
-                <check_execution val="True">
-                    <check_type blocking="True" criteria="done" ongoing="False" timeout="10" val="stdout" />
-                </check_execution>
+                <check_execution val="False">
+                            
+                        </check_execution>
             </component>
             <component val="rs_morse_simulation">
                 <command val="roslaunch strands_morse uol_mht_morse.launch" />
