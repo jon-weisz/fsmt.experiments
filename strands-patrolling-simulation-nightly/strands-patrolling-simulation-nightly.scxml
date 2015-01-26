@@ -41,16 +41,16 @@
                 <command val="rosrun topological_utils insert_map.py $(rospack find strands_uol_sim)/resources/mht.tpl robolab mht" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
-                <check_execution val="False">
-                            
-                        </check_execution>
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="0.01" val="pid" />
+                </check_execution>
             </component>
             <component val="rs_morse_simulation">
                 <command val="roslaunch strands_morse uol_mht_morse.launch" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="Exporting an image of capsize: (640" ongoing="False" timeout="120" val="stdout" />
+                    <check_type blocking="True" criteria="Exporting an image of capsize: (640" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking=" True" criteria=" 480) pixels" ongoing=" True" timeout=" 2" val=" pid" />
                 </check_execution>
             </component>
