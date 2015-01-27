@@ -14,5 +14,5 @@ IF (CMAKE_INSTALL_PREFIX)
 ENDIF()
 
 ### Glob, then install the files ###
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/strands-patrolling-simulation-nightly/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/strands-patrolling-simulation-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/csra-network-performance-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/csra-network-performance-nightly/)
