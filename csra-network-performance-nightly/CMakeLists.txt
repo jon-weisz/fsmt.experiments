@@ -16,3 +16,4 @@ ENDIF()
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/csra-network-performance-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/csra-network-performance-nightly.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/csra-network-performance-nightly/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/fsmt_environment.sh" DESTINATION ${PREFIX}/bin/)
