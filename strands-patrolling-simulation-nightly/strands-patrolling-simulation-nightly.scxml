@@ -2,10 +2,9 @@
     <datamodel>
         <data id="environment">
             <variable val="$PATH:$prefix/bin/:/opt/morse-blender-2.65-py-3.3/bin/" var="PATH" />
-            <variable val="$prefix" var="PREFIX" />
-            <variable val="$ROS_DISTRO" var="ROS" />
             <variable val="/opt/morse-blender-2.65-py-3.3/bin/blender" var="MORSE_BLENDER" />
-            <variable val="$prefix/catkin_ws/devel/lib/python2.7/dist-packages:/opt/$ROS/indigo/lib/python2.7/dist-packages" var="PYTHONPATH" />
+            <variable val="$ROS_DISTRO" var="ROS" />
+            <variable val="$prefix/catkin_ws/devel/lib/python2.7/dist-packages:/opt/$ROS_DISTRO/indigo/lib/python2.7/dist-packages" var="PYTHONPATH" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
