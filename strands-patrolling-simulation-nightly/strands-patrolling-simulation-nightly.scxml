@@ -5,7 +5,7 @@
             <variable val="$prefix" var="PREFIX" />
             <variable val="$ROS_DISTRO" var="ROS" />
             <variable val="/opt/morse-blender-2.65-py-3.3/bin/blender" var="MORSE_BLENDER" />
-            <variable val="localhost:0" var="DISPLAY" />
+            <variable val=":0" var="DISPLAY" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
