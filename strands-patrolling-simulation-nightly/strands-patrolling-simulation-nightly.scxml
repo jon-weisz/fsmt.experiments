@@ -107,6 +107,22 @@
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
+            <component val="plot">
+                <command val="rqt_plot /robot_pose/position" />
+                <path val="/opt/ros/$ROS/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="view_logs">
+                <command val="gedit $FSMLOG/reach_wp_*" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -181,9 +197,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_17" />
+                <my_ns:execute_program value="plot" />
             </onentry>
-            <transition event="reach_wp_17.execute_program.success" target="state_0_6" />
+            <transition event="plot.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -191,9 +207,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_20" />
+                <my_ns:execute_program value="reach_wp_17" />
             </onentry>
-            <transition event="reach_wp_20.execute_program.success" target="state_0_7" />
+            <transition event="reach_wp_17.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -201,21 +217,31 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_21" />
+                <my_ns:execute_program value="reach_wp_20" />
             </onentry>
-            <transition event="reach_wp_21.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="reach_wp_20.execute_program.success" target="state_0_8" />
             <onexit>
                 <log expr="'Exiting State: state_0_7'" label="INFO" />
             </onexit>
         </state>
+        <state id="state_0_8">
+            <onentry>
+                <log expr="'Entering State: state_0_8'" label="INFO" />
+                <my_ns:execute_program value="reach_wp_21" />
+            </onentry>
+            <transition event="reach_wp_21.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (Collecting data for 30 seconds)'" label="INFO" />
-                <send delay="'30s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (Collecting data for 5 seconds)'" label="INFO" />
+                <send delay="'5s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (Collected data for 30 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 5 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -233,31 +259,21 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_20" />
+                <my_ns:execute_program value="view_logs" />
             </onentry>
-            <transition event="reach_wp_20.execute_program.success" target="assessment_state_0_1" />
+            <transition event="view_logs.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
         </state>
-        <state id="assessment_state_0_1">
-            <onentry>
-                <log expr="'Entering State: assessment_state_0_1'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_20" />
-            </onentry>
-            <transition event="reach_wp_20.execute_program.success" target="assessment_pre_exit_test_wait" />
-            <onexit>
-                <log expr="'Exiting State: assessment_state_0_1'" label="INFO" />
-            </onexit>
-        </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (Collecting data for 30 seconds)'" label="INFO" />
-                <send delay="'30s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (Collecting data for 10 seconds)'" label="INFO" />
+                <send delay="'10s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (Collected data for 30 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 10 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
