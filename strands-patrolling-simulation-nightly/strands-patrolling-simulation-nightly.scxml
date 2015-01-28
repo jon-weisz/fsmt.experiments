@@ -62,6 +62,15 @@
                     <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
                 </check_execution>
             </component>
+            <component val="reach_wp_16">
+                <command val="rosrun topological_navigation nav_client.py WayPoint16" />
+                <path val="/opt/ros/$ROS/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                </check_execution>
+            </component>
             <component val="reach_wp_17">
                 <command val="rosrun topological_navigation nav_client.py WayPoint17" />
                 <path val="/opt/ros/$ROS/bin/" />
@@ -71,17 +80,8 @@
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
-            <component val="reach_wp_18">
-                <command val="rosrun topological_navigation nav_client.py WayPoint18" />
-                <path val="/opt/ros/$ROS/bin/" />
-                <execution_host val="localhost" />
-                <check_execution val="True">
-                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
-                </check_execution>
-            </component>
-            <component val="reach_wp_19">
-                <command val="rosrun topological_navigation nav_client.py WayPoint19" />
+            <component val="reach_wp_20">
+                <command val="rosrun topological_navigation nav_client.py WayPoint20" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -207,9 +207,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_17" />
+                <my_ns:execute_program value="reach_wp_16" />
             </onentry>
-            <transition event="reach_wp_17.execute_program.success" target="state_0_7" />
+            <transition event="reach_wp_16.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -217,9 +217,9 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_20" />
+                <my_ns:execute_program value="reach_wp_17" />
             </onentry>
-            <transition event="reach_wp_20.execute_program.success" target="state_0_8" />
+            <transition event="reach_wp_17.execute_program.success" target="state_0_8" />
             <onexit>
                 <log expr="'Exiting State: state_0_7'" label="INFO" />
             </onexit>
@@ -227,9 +227,9 @@
         <state id="state_0_8">
             <onentry>
                 <log expr="'Entering State: state_0_8'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_21" />
+                <my_ns:execute_program value="reach_wp_20" />
             </onentry>
-            <transition event="reach_wp_21.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="reach_wp_20.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
                 <log expr="'Exiting State: state_0_8'" label="INFO" />
             </onexit>
