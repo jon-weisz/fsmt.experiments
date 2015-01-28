@@ -89,8 +89,8 @@
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
-            <component val="reach_wp_20">
-                <command val="rosrun topological_navigation nav_client.py WayPoint20" />
+            <component val="reach_wp_21">
+                <command val="rosrun topological_navigation nav_client.py WayPoint21" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -98,8 +98,8 @@
                     <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
                 </check_execution>
             </component>
-            <component val="reach_wp_21">
-                <command val="rosrun topological_navigation nav_client.py WayPoint21" />
+            <component val="reach_wp_22">
+                <command val="rosrun topological_navigation nav_client.py WayPoint22" />
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
