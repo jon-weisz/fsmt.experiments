@@ -92,7 +92,7 @@
                 <command val="mv $FSMDAT/state_component_run_test.xml /tmp/current_fsmt.xml" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
-                <check_execution val="True">
+                <check_execution val="False">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                     <check_type blocking=" True" criteria="High Level Control Client successfully initialized" ongoing=" False" timeout=" 10" val=" stdout" />
                 </check_execution>
