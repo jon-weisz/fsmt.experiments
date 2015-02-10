@@ -88,6 +88,15 @@
                     <check_type blocking=" True" criteria="High Level Control Client successfully initialized" ongoing=" False" timeout=" 10" val=" stdout" />
                 </check_execution>
             </component>
+            <component val="mvxml">
+                <command val="mv $FSMDAT/state_component_run_test.xml /tmp/current_fsmt.xml" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                    <check_type blocking=" True" criteria="High Level Control Client successfully initialized" ongoing=" False" timeout=" 10" val=" stdout" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -214,9 +223,9 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="roscore" />
+                <my_ns:execute_program value="mvxml" />
             </onentry>
-            <transition event="roscore.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="mvxml.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
