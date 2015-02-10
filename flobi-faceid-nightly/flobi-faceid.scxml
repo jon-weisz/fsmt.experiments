@@ -88,13 +88,36 @@
                     <check_type blocking=" True" criteria="High Level Control Client successfully initialized" ongoing=" False" timeout=" 10" val=" stdout" />
                 </check_execution>
             </component>
+            <component val="usb_cam">
+                <command val="roslaunch ~/ocvf_data/ros_cam_node/ros_cam_node.launch" />
+                <path val="/opt/ros/indigo/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="liverecognizer">
+                <command val="ocvf_recognizer_ros.py -c ~/ocvf_data/haarcascade_frontalface_alt2.xml ~/ocvf_data/individuals.pkl" />
+                <path val="$prefix/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="1" val="pid" />
+                </check_execution>
+            </component>
+            <component val="rqt">
+                <command val="rqt_plot /ocvrecognizer/ros/people[0].position" />
+                <path val="/opt/ros/indigo/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
             <component val="mvxml">
                 <command val="mv $FSMDAT/state_component_run_test.xml /tmp/current_fsmt.xml" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="False">
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
-                    <check_type blocking=" True" criteria="High Level Control Client successfully initialized" ongoing=" False" timeout=" 10" val=" stdout" />
                 </check_execution>
             </component>
         </data>
@@ -141,9 +164,9 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="image_publisher" />
+                <my_ns:execute_program value="usb_cam" />
             </onentry>
-            <transition event="image_publisher.execute_program.success" target="state_0_3" />
+            <transition event="usb_cam.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -151,9 +174,9 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="facerecognizer" />
+                <my_ns:execute_program value="liverecognizer" />
             </onentry>
-            <transition event="facerecognizer.execute_program.success" target="state_0_4" />
+            <transition event="liverecognizer.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -161,9 +184,9 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="xsc3" />
+                <my_ns:execute_program value="image_publisher" />
             </onentry>
-            <transition event="xsc3.execute_program.success" target="state_0_5" />
+            <transition event="image_publisher.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -171,9 +194,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="hlc_server" />
+                <my_ns:execute_program value="facerecognizer" />
             </onentry>
-            <transition event="hlc_server.execute_program.success" target="state_0_6" />
+            <transition event="facerecognizer.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -181,9 +204,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="sim" />
+                <my_ns:execute_program value="xsc3" />
             </onentry>
-            <transition event="sim.execute_program.success" target="state_0_7" />
+            <transition event="xsc3.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -191,11 +214,31 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
+                <my_ns:execute_program value="hlc_server" />
+            </onentry>
+            <transition event="hlc_server.execute_program.success" target="state_0_8" />
+            <onexit>
+                <log expr="'Exiting State: state_0_7'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_8">
+            <onentry>
+                <log expr="'Entering State: state_0_8'" label="INFO" />
+                <my_ns:execute_program value="sim" />
+            </onentry>
+            <transition event="sim.execute_program.success" target="state_0_9" />
+            <onexit>
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_9">
+            <onentry>
+                <log expr="'Entering State: state_0_9'" label="INFO" />
                 <my_ns:execute_program value="personchecker" />
             </onentry>
             <transition event="personchecker.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_7'" label="INFO" />
+                <log expr="'Exiting State: state_0_9'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
