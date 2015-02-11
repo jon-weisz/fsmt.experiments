@@ -21,7 +21,7 @@
                 <path val="$RELEASE_PREFIX/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="[SCENE INITIALIZED]" ongoing="False" timeout="60" val="stdout" />
+                    <check_type blocking="True" criteria="SCENE INITIALIZED" ongoing="False" timeout="60" val="stdout" />
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
