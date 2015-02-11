@@ -29,7 +29,7 @@
                 </check_execution>
             </component>
             <component val="cat">
-                <command val="python3.2 $RELEASE_PREFIX/bin/cat_script.py" />
+                <command val="python3 $RELEASE_PREFIX/bin/cat_script.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -37,7 +37,7 @@
                 </check_execution>
             </component>
             <component val="mouse">
-                <command val="python3.2 $RELEASE_PREFIX/bin/mouse_script.py" />
+                <command val="python3 $RELEASE_PREFIX/bin/mouse_script.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
