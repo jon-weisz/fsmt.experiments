@@ -2,6 +2,7 @@
     <datamodel>
         <data id="environment">
             <variable val="$prefix/morse-1.2.1-TARBALL/" var="RELEASE_PREFIX" />
+            <variable val="$prefix/morse-1.2.1-TARBALL/lib/python3/dist-packages/" var="PYTHONPATH" />
             <variable val="$prefix/morse-1.2.1-TARBALL/etc/fsmt-experiments/morse-CNM-1.2.1/" var="SCRIPT_PATH" />
         </data>
         <data id="hosts">
