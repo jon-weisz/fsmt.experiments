@@ -112,8 +112,8 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
-            <component val="mvxml">
-                <command val="mv $FSMDAT/state_component_run_test.xml /tmp/current_fsmt.xml" />
+            <component val="write_tra">
+                <command val="echo $FSMDAT/state_component_run_test.xml &gt; /tmp/xml_file" />
                 <path val="/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="False">
@@ -266,9 +266,9 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="mvxml" />
+                <my_ns:execute_program value="write_tra" />
             </onentry>
-            <transition event="mvxml.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="write_tra.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
