@@ -120,6 +120,14 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="spread_remove">
+                <command val="rm -f /tmp/4803" />
+                <path val="/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="False">
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -144,9 +152,9 @@
         <state id="state_0">
             <onentry>
                 <log expr="'Entering State: state_0'" label="INFO" />
-                <my_ns:execute_program value="spread" />
+                <my_ns:execute_program value="spread_remove" />
             </onentry>
-            <transition event="spread.execute_program.success" target="state_0_1" />
+            <transition event="spread_remove.execute_program.success" target="state_0_1" />
             <onexit>
                 <log expr="'Exiting State: state_0'" label="INFO" />
             </onexit>
@@ -154,9 +162,9 @@
         <state id="state_0_1">
             <onentry>
                 <log expr="'Entering State: state_0_1'" label="INFO" />
-                <my_ns:execute_program value="roscore" />
+                <my_ns:execute_program value="spread" />
             </onentry>
-            <transition event="roscore.execute_program.success" target="state_0_2" />
+            <transition event="spread.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
             </onexit>
@@ -164,9 +172,9 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="xsc3" />
+                <my_ns:execute_program value="roscore" />
             </onentry>
-            <transition event="xsc3.execute_program.success" target="state_0_3" />
+            <transition event="roscore.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -174,9 +182,9 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="hlc_server" />
+                <my_ns:execute_program value="xsc3" />
             </onentry>
-            <transition event="hlc_server.execute_program.success" target="state_0_4" />
+            <transition event="xsc3.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -184,9 +192,9 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="sim" />
+                <my_ns:execute_program value="hlc_server" />
             </onentry>
-            <transition event="sim.execute_program.success" target="state_0_5" />
+            <transition event="hlc_server.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -194,9 +202,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="image_publisher" />
+                <my_ns:execute_program value="sim" />
             </onentry>
-            <transition event="image_publisher.execute_program.success" target="state_0_6" />
+            <transition event="sim.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -204,9 +212,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="facerecognizer" />
+                <my_ns:execute_program value="image_publisher" />
             </onentry>
-            <transition event="facerecognizer.execute_program.success" target="state_0_7" />
+            <transition event="image_publisher.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -214,11 +222,21 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
+                <my_ns:execute_program value="facerecognizer" />
+            </onentry>
+            <transition event="facerecognizer.execute_program.success" target="state_0_8" />
+            <onexit>
+                <log expr="'Exiting State: state_0_7'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_8">
+            <onentry>
+                <log expr="'Entering State: state_0_8'" label="INFO" />
                 <my_ns:execute_program value="personchecker" />
             </onentry>
             <transition event="personchecker.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_7'" label="INFO" />
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
