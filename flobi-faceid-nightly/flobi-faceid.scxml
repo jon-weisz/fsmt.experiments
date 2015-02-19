@@ -164,9 +164,9 @@
         <state id="state_0_2">
             <onentry>
                 <log expr="'Entering State: state_0_2'" label="INFO" />
-                <my_ns:execute_program value="usb_cam" />
+                <my_ns:execute_program value="image_publisher" />
             </onentry>
-            <transition event="usb_cam.execute_program.success" target="state_0_3" />
+            <transition event="image_publisher.execute_program.success" target="state_0_3" />
             <onexit>
                 <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
@@ -174,9 +174,9 @@
         <state id="state_0_3">
             <onentry>
                 <log expr="'Entering State: state_0_3'" label="INFO" />
-                <my_ns:execute_program value="liverecognizer" />
+                <my_ns:execute_program value="facerecognizer" />
             </onentry>
-            <transition event="liverecognizer.execute_program.success" target="state_0_4" />
+            <transition event="facerecognizer.execute_program.success" target="state_0_4" />
             <onexit>
                 <log expr="'Exiting State: state_0_3'" label="INFO" />
             </onexit>
@@ -184,9 +184,9 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="image_publisher" />
+                <my_ns:execute_program value="xsc3" />
             </onentry>
-            <transition event="image_publisher.execute_program.success" target="state_0_5" />
+            <transition event="xsc3.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -194,9 +194,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="facerecognizer" />
+                <my_ns:execute_program value="hlc_server" />
             </onentry>
-            <transition event="facerecognizer.execute_program.success" target="state_0_6" />
+            <transition event="hlc_server.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -204,9 +204,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="xsc3" />
+                <my_ns:execute_program value="sim" />
             </onentry>
-            <transition event="xsc3.execute_program.success" target="state_0_7" />
+            <transition event="sim.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -214,41 +214,21 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
-                <my_ns:execute_program value="hlc_server" />
-            </onentry>
-            <transition event="hlc_server.execute_program.success" target="state_0_8" />
-            <onexit>
-                <log expr="'Exiting State: state_0_7'" label="INFO" />
-            </onexit>
-        </state>
-        <state id="state_0_8">
-            <onentry>
-                <log expr="'Entering State: state_0_8'" label="INFO" />
-                <my_ns:execute_program value="sim" />
-            </onentry>
-            <transition event="sim.execute_program.success" target="state_0_9" />
-            <onexit>
-                <log expr="'Exiting State: state_0_8'" label="INFO" />
-            </onexit>
-        </state>
-        <state id="state_0_9">
-            <onentry>
-                <log expr="'Entering State: state_0_9'" label="INFO" />
                 <my_ns:execute_program value="personchecker" />
             </onentry>
             <transition event="personchecker.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_9'" label="INFO" />
+                <log expr="'Exiting State: state_0_7'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 40 seconds)'" label="INFO" />
+                <log expr="'Entering State: Wait (Collecting data for 40 seconds)'" label="INFO" />
                 <send delay="'40s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 40 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 40 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -275,12 +255,12 @@
         </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 10 seconds)'" label="INFO" />
+                <log expr="'Entering State: Wait (Collecting data for 10 seconds)'" label="INFO" />
                 <send delay="'10s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 10 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 10 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
