@@ -3,7 +3,7 @@
         <data id="environment">
             <variable val="0.0" var="FLOBI_CAM_TRANSLATION_X" />
             <variable val="0.1" var="FLOBI_CAM_TRANSLATION_Y" />
-            <variable val="0.55" var="FLOBI_CAM_TRANSLATION_Z" />
+            <variable val="0.1" var="FLOBI_CAM_TRANSLATION_Z" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
