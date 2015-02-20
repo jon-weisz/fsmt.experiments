@@ -30,6 +30,7 @@ text = Text(root)
 for key, value in persons_found.iteritems():
     if not value:
         print "Could not find: " + key
+        time.sleep(10)
         test_failed = True
         sys.exit(1)
 
