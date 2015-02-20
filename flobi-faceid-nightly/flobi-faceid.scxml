@@ -274,12 +274,12 @@
         </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (Collecting data for 5 seconds)'" label="INFO" />
-                <send delay="'5s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (Collecting data for 8 seconds)'" label="INFO" />
+                <send delay="'8s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (Collected data for 5 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 8 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
