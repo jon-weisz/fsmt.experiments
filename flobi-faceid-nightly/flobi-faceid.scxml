@@ -125,8 +125,8 @@
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="Test Passed --- Found: Linus" ongoing="False" timeout="2" val="stdout" />
-                    <check_type blocking=" True" criteria=" Bill" ongoing=" False" timeout="1" val=" pid" />
+                    <check_type blocking="True" criteria="Test Passed ---" ongoing="False" timeout="2" val="stdout" />
+                    <check_type blocking=" True" criteria="" ongoing=" False" timeout="1" val=" pid" />
                 </check_execution>
             </component>
         </data>
