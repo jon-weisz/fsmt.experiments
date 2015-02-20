@@ -112,14 +112,6 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
-            <component val="write_tra">
-                <command val="echo $FSMDAT/state_component_run_test.xml &gt; /tmp/xml_file" />
-                <path val="/bin/" />
-                <execution_host val="localhost" />
-                <check_execution val="False">
-                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
-                </check_execution>
-            </component>
             <component val="spread_remove">
                 <command val="rm -f /tmp/4803" />
                 <path val="/bin/" />
