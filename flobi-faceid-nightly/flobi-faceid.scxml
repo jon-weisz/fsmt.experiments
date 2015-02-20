@@ -121,8 +121,8 @@
                 </check_execution>
             </component>
             <component val="assess">
-                <command val="flobi-faceid-staticresult.py" />
-                <path val="$prefix/bin/" />
+                <command val="python flobi-faceid-staticresult.py" />
+                <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="Test Passed --- Found: Linus" ongoing="False" timeout="2" val="stdout" />
