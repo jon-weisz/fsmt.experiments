@@ -36,7 +36,7 @@
                 </check_execution>
             </component>
             <component val="image_publisher">
-                <command val="ocvf_image_publisher_ros.py ~/ocvf_data/raw" />
+                <command val="ocvf_image_publisher_ros.py $prefix/share/ocvfacerec/raw" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -45,7 +45,7 @@
                 </check_execution>
             </component>
             <component val="facerecognizer">
-                <command val="ocvf_recognizer_ros.py -c ~/ocvf_data/haarcascade_frontalface_alt2.xml -s /ocvfacerec/static_image ~/ocvf_data/individuals.pkl" />
+                <command val="ocvf_recognizer_ros.py -c $prefix/share/ocvfacerec/haarcascade_frontalface_alt2.xml -s /ocvfacerec/static_image $prefix/share/ocvfacerec/individuals.pkl" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -89,7 +89,7 @@
                 </check_execution>
             </component>
             <component val="usb_cam">
-                <command val="roslaunch ~/ocvf_data/ros_cam_node/ros_cam_node.launch" />
+                <command val="roslaunch $prefix/share/ocvfacerec/ros_cam_node/ros_cam_node.launch" />
                 <path val="/opt/ros/indigo/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -97,7 +97,7 @@
                 </check_execution>
             </component>
             <component val="liverecognizer">
-                <command val="ocvf_recognizer_ros.py -c ~/ocvf_data/haarcascade_frontalface_alt2.xml ~/ocvf_data/individuals.pkl" />
+                <command val="ocvf_recognizer_ros.py -c $prefix/share/ocvfacerec/haarcascade_frontalface_alt2.xml $prefix/share/ocvfacerec/individuals.pkl" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
