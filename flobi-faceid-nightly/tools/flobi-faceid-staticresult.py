@@ -7,7 +7,7 @@ from Tkinter import *
 
 
 logpath = os.environ['FSMLOG']
-logfile = logpath + "personchecker.log"
+logfile = logpath + "/personchecker.log"
 persons_found = {'linus': False, 'bill': False, 'dennis': False, 'steve': False}
 test_failed = False
 
