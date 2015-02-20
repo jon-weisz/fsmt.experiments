@@ -16,3 +16,4 @@ ENDIF()
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/flobi-faceid.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/flobi-faceid/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/flobi-faceid.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/flobi-faceid/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/flobi-faceid-staticresult.py" DESTINATION ${PREFIX}/bin/)
