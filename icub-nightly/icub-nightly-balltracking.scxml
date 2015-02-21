@@ -153,6 +153,15 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="assess-angles">
+                <command val="python2.7 $prefix/bin/icub-csv-angle-compare.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="First and last joint values are correct" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -341,9 +350,19 @@
                 <log expr="'Entering State: assessment_state_0_3'" label="INFO" />
                 <my_ns:execute_program value="view-left-plot" />
             </onentry>
-            <transition event="view-left-plot.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="view-left-plot.execute_program.success" target="assessment_state_0_4" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0_3'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="assessment_state_0_4">
+            <onentry>
+                <log expr="'Entering State: assessment_state_0_4'" label="INFO" />
+                <my_ns:execute_program value="assess-angles" />
+            </onentry>
+            <transition event="assess-angles.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <onexit>
+                <log expr="'Exiting State: assessment_state_0_4'" label="INFO" />
             </onexit>
         </state>
         <state id="assessment_pre_exit_test_wait">

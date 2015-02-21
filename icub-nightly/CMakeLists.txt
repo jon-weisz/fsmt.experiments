@@ -15,6 +15,7 @@ ENDIF()
 
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-nightly-jointpos.py" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-csv-angle-compare.py" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-data-set-player-rpc.py" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-yarp-connect.sh" DESTINATION ${PREFIX}/bin/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/icub-plot-left-arm.sh" DESTINATION ${PREFIX}/bin/)
