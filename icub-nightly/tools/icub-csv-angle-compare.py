@@ -5,7 +5,7 @@ import sys
 import csv
 import time
 
-logpath = os.environ['$FSMLOG']
+logpath = os.environ['FSMLOG']
 
 logfile = "/right_arm.dump"
 raw_file = logpath + logfile
