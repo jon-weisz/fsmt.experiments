@@ -43,6 +43,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="yarp: Port /dataSetPlayer/rpc:i active" ongoing="False" timeout="30" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="player-load-data">
@@ -51,6 +52,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="sleep">
@@ -92,6 +94,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[ok]" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="left-eye-view">
