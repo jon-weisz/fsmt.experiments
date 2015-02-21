@@ -19,8 +19,8 @@
                     <check_type blocking="False" criteria="" ongoing="False" timeout="3" val="pid" />
                 </check_execution>
             </component>
-            <component val="yarpserver --write">
-                <command val="yarpserver" />
+            <component val="yarpserver">
+                <command val="yarpserver --write" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
