@@ -32,11 +32,11 @@ last_value = joint_2[last - 1]
 time.sleep(2)
 
 if first_value < 25.0 or first_value > 35.0:
-    print "First joint value is off by 5 degree: " % str(first_value)
+    print "First joint value is off by 5 degree: %s" % str(first_value)
     sys.exit(1)
 
 if last_value < 25.0 or last_value > 35.0:
-    print "Last joint value is off by 5 degree" % str(first_value)
+    print "Last joint value is off by 5 degree: %s" % str(first_value)
     sys.exit(1)
 
 print "First and last joint values are correct"
