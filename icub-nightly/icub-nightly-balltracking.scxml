@@ -20,7 +20,7 @@
                 </check_execution>
             </component>
             <component val="yarpserver">
-                <command val="yarpserver --ip 127.0.0.1 --write" />
+                <command val="yarpserver --write" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
