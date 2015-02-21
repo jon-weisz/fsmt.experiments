@@ -159,8 +159,8 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="First and last joint values are correct" ongoing="False" timeout="15" val="stdout" />
+                    <check_type blocking="True" criteria="value is off" ongoing="False" timeout="5" val="stdoutexclude" />
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
-                    <check_type blocking="True" criteria="is off" ongoing="False" timeout="5" val="stdoutexclude" />
                 </check_execution>
             </component>
         </data>
