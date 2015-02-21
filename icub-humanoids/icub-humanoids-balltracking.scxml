@@ -1,4 +1,4 @@
-<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="icub-nightly-balltracking" initial="initialise_test" version="1.0">
+<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="icub-humanoids-balltracking" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
             <variable val="$PATH:$ICUBcontrib_DIR/bin" var="PATH" />
@@ -20,7 +20,7 @@
                 </check_execution>
             </component>
             <component val="yarpserver">
-                <command val="yarpserver" />
+                <command val="yarpserver --ip 127.0.0.1 --write" />
                 <path val="$prefix/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -143,7 +143,7 @@
                 </check_execution>
             </component>
             <component val="yarpscope">
-                <command val="yarpscope --xml $prefix/share/icub-nightly-scope.xml --dx 500 --dy 600" />
+                <command val="yarpscope --xml $prefix/share/icub-humanoids-scope.xml --dx 500 --dy 600" />
                 <path val="$prefix/bin" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
@@ -293,12 +293,12 @@
         </state>
         <state id="pre_result_assessment_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 70 seconds)'" label="INFO" />
+                <log expr="'Entering State: Wait (Collecting data for 70 seconds)'" label="INFO" />
                 <send delay="'70s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="result_assessment" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 70 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 70 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
@@ -355,12 +355,12 @@
         </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (collecting data for 15 seconds)'" label="INFO" />
+                <log expr="'Entering State: Wait (Collecting data for 15 seconds)'" label="INFO" />
                 <send delay="'15s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (collected data for 15 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 15 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
