@@ -40,3 +40,6 @@ if last_value < 25.0 or last_value > 35.0:
     sys.exit(1)
 
 print "First and last joint values are correct"
+
+while True:
+    time.sleep(2)
