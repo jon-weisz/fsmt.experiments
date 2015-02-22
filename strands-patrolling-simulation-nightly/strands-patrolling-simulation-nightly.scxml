@@ -123,6 +123,15 @@
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
+            <component val="set_cam">
+                <command val="python $prefix/bin/strands_set_camera.py" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="odom received!" ongoing="False" timeout="180" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -187,9 +196,9 @@
         <state id="state_0_4">
             <onentry>
                 <log expr="'Entering State: state_0_4'" label="INFO" />
-                <my_ns:execute_program value="rs_mht_nav" />
+                <my_ns:execute_program value="set_cam" />
             </onentry>
-            <transition event="rs_mht_nav.execute_program.success" target="state_0_5" />
+            <transition event="set_cam.execute_program.success" target="state_0_5" />
             <onexit>
                 <log expr="'Exiting State: state_0_4'" label="INFO" />
             </onexit>
@@ -197,9 +206,9 @@
         <state id="state_0_5">
             <onentry>
                 <log expr="'Entering State: state_0_5'" label="INFO" />
-                <my_ns:execute_program value="plot" />
+                <my_ns:execute_program value="rs_mht_nav" />
             </onentry>
-            <transition event="plot.execute_program.success" target="state_0_6" />
+            <transition event="rs_mht_nav.execute_program.success" target="state_0_6" />
             <onexit>
                 <log expr="'Exiting State: state_0_5'" label="INFO" />
             </onexit>
@@ -207,9 +216,9 @@
         <state id="state_0_6">
             <onentry>
                 <log expr="'Entering State: state_0_6'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_16" />
+                <my_ns:execute_program value="plot" />
             </onentry>
-            <transition event="reach_wp_16.execute_program.success" target="state_0_7" />
+            <transition event="plot.execute_program.success" target="state_0_7" />
             <onexit>
                 <log expr="'Exiting State: state_0_6'" label="INFO" />
             </onexit>
@@ -217,9 +226,9 @@
         <state id="state_0_7">
             <onentry>
                 <log expr="'Entering State: state_0_7'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_17" />
+                <my_ns:execute_program value="reach_wp_16" />
             </onentry>
-            <transition event="reach_wp_17.execute_program.success" target="state_0_8" />
+            <transition event="reach_wp_16.execute_program.success" target="state_0_8" />
             <onexit>
                 <log expr="'Exiting State: state_0_7'" label="INFO" />
             </onexit>
@@ -227,11 +236,21 @@
         <state id="state_0_8">
             <onentry>
                 <log expr="'Entering State: state_0_8'" label="INFO" />
+                <my_ns:execute_program value="reach_wp_17" />
+            </onentry>
+            <transition event="reach_wp_17.execute_program.success" target="state_0_9" />
+            <onexit>
+                <log expr="'Exiting State: state_0_8'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_9">
+            <onentry>
+                <log expr="'Entering State: state_0_9'" label="INFO" />
                 <my_ns:execute_program value="reach_wp_20" />
             </onentry>
             <transition event="reach_wp_20.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
-                <log expr="'Exiting State: state_0_8'" label="INFO" />
+                <log expr="'Exiting State: state_0_9'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
