@@ -3,6 +3,7 @@
         <data id="environment">
             <variable val="$PATH:$prefix/bin/" var="PATH" />
             <variable val="$ROS_DISTRO" var="ROS" />
+            <variable val="/opt/ros/indigo/share/strands_morse/uol/src:/opt/ros/indigo/share/strands_morse/strands_sim/src:$prefix/catkin_ws/devel/lib/python2.7/dist-packages:/opt/ros/indigo/lib/python2.7/dist-packages:$prefix/lib/python2.7/dist-packages" var="PYTHONPATH" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
