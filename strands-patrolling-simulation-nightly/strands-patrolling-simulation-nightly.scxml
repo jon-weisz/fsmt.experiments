@@ -128,7 +128,6 @@
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="odom received!" ongoing="False" timeout="180" val="stdout" />
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
