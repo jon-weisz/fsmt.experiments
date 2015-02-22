@@ -237,19 +237,9 @@
                 <log expr="'Entering State: state_0_8'" label="INFO" />
                 <my_ns:execute_program value="reach_wp_17" />
             </onentry>
-            <transition event="reach_wp_17.execute_program.success" target="state_0_9" />
+            <transition event="reach_wp_17.execute_program.success" target="pre_result_assessment_wait" />
             <onexit>
                 <log expr="'Exiting State: state_0_8'" label="INFO" />
-            </onexit>
-        </state>
-        <state id="state_0_9">
-            <onentry>
-                <log expr="'Entering State: state_0_9'" label="INFO" />
-                <my_ns:execute_program value="reach_wp_20" />
-            </onentry>
-            <transition event="reach_wp_20.execute_program.success" target="pre_result_assessment_wait" />
-            <onexit>
-                <log expr="'Exiting State: state_0_9'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
