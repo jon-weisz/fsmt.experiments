@@ -1,8 +1,7 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="icub-humanoids-balltracking" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
-            <variable val="$PATH:$prefix/bin/:/opt/morse-blender-2.65-py-3.3/bin/" var="PATH" />
-            <variable val="/opt/morse-blender-2.65-py-3.3/bin/blender" var="MORSE_BLENDER" />
+            <variable val="$PATH:$prefix/bin/" var="PATH" />
             <variable val="$ROS_DISTRO" var="ROS" />
         </data>
         <data id="hosts">
