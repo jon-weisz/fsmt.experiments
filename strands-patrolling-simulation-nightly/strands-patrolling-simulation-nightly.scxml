@@ -23,7 +23,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="started core service [/rosout]" ongoing="False" timeout="30" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
             <component val="rs_mongo_store">
@@ -32,7 +32,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="[initandlisten] connection accepted" ongoing="False" timeout="30" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout=" 2" val="pid" />
                 </check_execution>
             </component>
             <component val="rr_insert_map">
@@ -41,7 +41,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="WayPoint1" ongoing="False" timeout="10" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 0.1" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="0.1" val="pid" />
                 </check_execution>
             </component>
             <component val="rs_morse_simulation">
@@ -50,7 +50,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="Exporting an image of capsize: (640" ongoing="False" timeout="240" val="stdout" />
-                    <check_type blocking=" True" criteria=" 480) pixels" ongoing=" True" timeout=" 2" val=" pid" />
+                    <check_type blocking="True" criteria=" 480) pixels" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
             <component val="rs_mht_nav">
@@ -59,7 +59,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="odom received!" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" True" timeout=" 2" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
             <component val="reach_wp_16">
@@ -68,7 +68,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="reach_wp_17">
@@ -77,7 +77,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="reach_wp_20">
@@ -85,8 +85,8 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="240" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                    <check_type blocking="True" criteria="success:True" ongoing="False" timeout="240" val="stdout" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="reach_wp_21">
@@ -95,7 +95,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="reach_wp_22">
@@ -104,7 +104,7 @@
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="success: True" ongoing="False" timeout="180" val="stdout" />
-                    <check_type blocking=" True" criteria="" ongoing=" False" timeout=" 1" val=" pid" />
+                    <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
             <component val="plot">
