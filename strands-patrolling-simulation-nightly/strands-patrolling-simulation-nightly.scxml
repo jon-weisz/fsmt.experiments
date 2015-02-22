@@ -3,7 +3,6 @@
         <data id="environment">
             <variable val="$PATH:$prefix/bin/" var="PATH" />
             <variable val="$ROS_DISTRO" var="ROS" />
-            <variable val="$PYTHONPATH:/opt/strands-morse-simulator/lib/python3/dist-packages/" var="PYTHONPATH" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
