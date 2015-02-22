@@ -124,7 +124,7 @@
                 </check_execution>
             </component>
             <component val="set_cam">
-                <command val="python $prefix/bin/strands_set_camera.py" />
+                <command val="python3 $prefix/bin/strands_set_camera.py" />
                 <path val="/usr/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
