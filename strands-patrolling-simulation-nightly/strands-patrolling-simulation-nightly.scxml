@@ -85,7 +85,7 @@
                 <path val="/opt/ros/$ROS/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
-                    <check_type blocking="True" criteria="success:True" ongoing="False" timeout="240" val="stdout" />
+                    <check_type blocking="True" criteria="success: True" ongoing="False" timeout="240" val="stdout" />
                     <check_type blocking="True" criteria="" ongoing="False" timeout="1" val="pid" />
                 </check_execution>
             </component>
