@@ -41,6 +41,14 @@
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
+            <component val="log_view">
+                <command val="gedit $FSMLOG/simple_logger_x.log" />
+                <path val="/usr/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -117,21 +125,21 @@
         <state id="assessment_state_0">
             <onentry>
                 <log expr="'Entering State: assessment_state_0'" label="INFO" />
-                <my_ns:execute_program value="simulation" />
+                <my_ns:execute_program value="log_view" />
             </onentry>
-            <transition event="simulation.execute_program.success" target="assessment_pre_exit_test_wait" />
+            <transition event="log_view.execute_program.success" target="assessment_pre_exit_test_wait" />
             <onexit>
                 <log expr="'Exiting State: assessment_state_0'" label="INFO" />
             </onexit>
         </state>
         <state id="assessment_pre_exit_test_wait">
             <onentry>
-                <log expr="'Entering State: Wait (Collecting data for 8 seconds)'" label="INFO" />
-                <send delay="'8s'" event="wait.finish" />
+                <log expr="'Entering State: Wait (Collecting data for 10 seconds)'" label="INFO" />
+                <send delay="'10s'" event="wait.finish" />
             </onentry>
             <transition event="wait.finish" target="exit_test" />
             <onexit>
-                <log expr="'Exiting State: Wait (Collected data for 8 seconds)'" label="INFO" />
+                <log expr="'Exiting State: Wait (Collected data for 10 seconds)'" label="INFO" />
             </onexit>
         </state>
     </state>
