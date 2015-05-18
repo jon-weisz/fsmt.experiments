@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$prefix/bin/rsb-toolscl0.13 logger -s detailed --max-queued-events=1000 --on-error=continue --idl-path="/vol/toolkit/nightly/trusty/x86_64/last/share/rst0.13/proto/stable" --load-idl="/vol/toolkit/nightly/trusty/x86_64/last/share/rst0.13/proto/stable/rst/geometry/Pose.proto" socket:/lwr/status/endeff/pose | grep X | cut -d: -f2

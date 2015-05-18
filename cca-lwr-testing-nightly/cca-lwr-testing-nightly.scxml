@@ -33,6 +33,14 @@
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
                 </check_execution>
             </component>
+            <component val="simple_logger_x">
+                <command val="cca_lwr_logger" />
+                <path val="$HOME/cca-lwr-testing-nightly/bin/" />
+                <execution_host val="localhost" />
+                <check_execution val="True">
+                    <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
+                </check_execution>
+            </component>
         </data>
     </datamodel>
     <transition event="unsatisfied_criteria" target="criteria_error">
@@ -69,9 +77,19 @@
                 <log expr="'Entering State: state_0_1'" label="INFO" />
                 <my_ns:execute_program value="simple_controller" />
             </onentry>
-            <transition event="simple_controller.execute_program.success" target="pre_result_assessment_wait" />
+            <transition event="simple_controller.execute_program.success" target="state_0_2" />
             <onexit>
                 <log expr="'Exiting State: state_0_1'" label="INFO" />
+            </onexit>
+        </state>
+        <state id="state_0_2">
+            <onentry>
+                <log expr="'Entering State: state_0_2'" label="INFO" />
+                <my_ns:execute_program value="simple_logger_x" />
+            </onentry>
+            <transition event="simple_logger_x.execute_program.success" target="pre_result_assessment_wait" />
+            <onexit>
+                <log expr="'Exiting State: state_0_2'" label="INFO" />
             </onexit>
         </state>
         <state id="pre_result_assessment_wait">
