@@ -16,4 +16,4 @@ ENDIF()
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/cca-lwr-testing-nightly.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/cca-lwr-testing-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/cca-lwr-testing-nightly.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/cca-lwr-testing-nightly/)
-INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/cca_lwr_controller_script" DESTINATION ${PREFIX}/bin/cca_lwr_controller_script)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/cca_lwr_controller_script" DESTINATION ${PREFIX}/bin/)
