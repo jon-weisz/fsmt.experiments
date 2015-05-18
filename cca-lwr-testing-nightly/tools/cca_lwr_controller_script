@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$prefix/bin/ccalwr_sendLWRRemoteCmd -s /lwr/cmd/all/position --jointPositionStart "-90 -90 -90 -90 -90 -90 -90" --jointPositionEnd "90 90 90 90 90 90 90" --numPoints 10 -R -c500
