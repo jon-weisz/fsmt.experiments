@@ -23,7 +23,7 @@
             </component>
             <component val="simple_controller">
                 <command val="cca_lwr_controller_script" />
-                <path val="$HOME/cca-lwr-testing-nightly/bin/" />
+                <path val="$prefix/cca-lwr-testing-nightly/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
@@ -31,7 +31,7 @@
             </component>
             <component val="simple_logger_x">
                 <command val="cca_lwr_logger" />
-                <path val="$HOME/cca-lwr-testing-nightly/bin/" />
+                <path val="$prefix/cca-lwr-testing-nightly/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="" ongoing="True" timeout="2" val="pid" />
