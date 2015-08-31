@@ -1,6 +1,7 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="cca-lwr-nightly" initial="initialise_test" version="1.0">
     <datamodel>
-	<environment/>
+	<environment>
+	</environment>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
         </data>
