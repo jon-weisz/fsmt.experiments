@@ -1,9 +1,9 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:my_ns="de.unibi.citec.clf.fsmt" id="MORSE-find-human-1.2" initial="initialise_test" version="1.0">
     <datamodel>
         <data id="environment">
-            <variable val="/tmp/morse-1.2-STABLE/" var="RELEASE_PREFIX" />
-            <variable val="/opt/ros/groovy/lib/python2.7/dist-packages/:/tmp/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
-            <variable val="/tmp/morse-1.2-STABLE/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
+            <variable val="$prefix" var="RELEASE_PREFIX" />
+            <variable val="/opt/ros/indigo/lib/python2.7/dist-packages/:/tmp/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
+            <variable val=$prefix/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
             <variable val="/tmp/morse-1.2-STABLE/" var="MORSE_ROOT" />
         </data>
@@ -21,7 +21,7 @@
             </component>
             <component val="roscore">
                 <command val="roscore" />
-                <path val="/opt/ros/groovy/bin/" />
+                <path val="/opt/ros/indigo/bin/" />
                 <execution_host val="localhost" />
                 <check_execution val="True">
                     <check_type blocking="True" criteria="started core service [/rosout]" ongoing="False" timeout="10" val="stdout" />
