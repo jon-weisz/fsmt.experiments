@@ -2,10 +2,10 @@
     <datamodel>
         <data id="environment">
             <variable val="$prefix" var="RELEASE_PREFIX" />
-            <variable val="/opt/ros/indigo/lib/python2.7/dist-packages/:/tmp/morse-1.2-STABLE/lib/python3.2/site-packages/" var="PYTHONPATH" />
+            <variable val="/opt/ros/indigo/lib/python2.7/dist-packages/:/tmp/morse-1.2-STABLE/lib/python3.2/site-packages/:$PYTHONPATH" var="PYTHONPATH" />
             <variable val=$prefix/etc/fsmt-experiments/MORSE-find-human-1.2/" var="SCRIPT_PATH" />
             <variable val="/usr/bin/blender" var="MORSE_BLENDER" />
-            <variable val="/tmp/morse-1.2-STABLE/" var="MORSE_ROOT" />
+            <variable val="$prefix" var="MORSE_ROOT" />
         </data>
         <data id="hosts">
             <hostinfo ip="127.0.0.1" name="localhost" />
