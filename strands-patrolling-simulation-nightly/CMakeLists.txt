@@ -15,5 +15,6 @@ ENDIF()
 
 ### Glob, then install the files ###
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/tools/strands_set_camera.py" DESTINATION ${PREFIX}/bin/)
+INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/strands-patrolling-simulation-profile.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/strands-patrolling-simulation-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/strands-patrolling-simulation-nightly.ini" DESTINATION ${PREFIX}/etc/fsmt-experiments/strands-patrolling-simulation-nightly/)
 INSTALL(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/strands-patrolling-simulation-nightly.scxml" DESTINATION ${PREFIX}/etc/fsmt-experiments/strands-patrolling-simulation-nightly/)
